@@ -309,14 +309,36 @@ button, select {
 .font-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.font-controls .btn {
-  font-size: 0.95rem;
-  direction: ltr;
+/* − and + joined into one pill */
+.font-size {
+  display: inline-flex;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
 }
-.font-controls .font-up { font-size: 1.15rem; }
+
+.font-size .btn {
+  width: 44px;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.font-size .btn:first-child {
+  border-radius: 999px 0 0 999px;
+  border-right-width: 0;
+}
+
+.font-size .btn:last-child {
+  border-radius: 0 999px 999px 0;
+}
+
+.font-size .btn + .btn {
+  border-left-color: var(--border);
+}
 
 @media (max-width: 480px) {
   .topbar { padding: 8px 12px; gap: 6px; }
