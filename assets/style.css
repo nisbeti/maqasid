@@ -1,4 +1,5 @@
 :root {
+  --font-scale: 1;
   --bg: #f6f0e2;
   --surface: #fffaf0;
   --text: #2a2017;
@@ -242,12 +243,12 @@ button, select {
 }
 
 :root[lang="ar"] .reader {
-  font-size: 1.4rem;
+  font-size: calc(1.4rem * var(--font-scale));
   line-height: 2.15;
 }
 
 :root[lang="en"] .reader {
-  font-size: 1.2rem;
+  font-size: calc(1.2rem * var(--font-scale));
   line-height: 1.8;
 }
 
@@ -301,10 +302,27 @@ button, select {
   color: var(--muted);
   font-size: 0.95rem;
   font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
 }
+
+.font-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.font-controls .btn {
+  font-size: 0.95rem;
+  direction: ltr;
+}
+.font-controls .font-up { font-size: 1.15rem; }
 
 @media (max-width: 480px) {
   .topbar { padding: 8px 12px; gap: 6px; }
   .page-select { max-width: 8.5em; }
-  .btn-label-long { display: none; }
+  .bottombar { padding-inline: 12px; }
+  .bottombar #prev, .bottombar #next { width: 44px; padding: 0; }
+  .bottombar .label { display: none; }
+  .bottombar .counter { font-size: 0.85rem; }
 }

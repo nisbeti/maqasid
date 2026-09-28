@@ -10,6 +10,8 @@
       toggleTitle: 'Read in English',
       home: 'الصفحة الرئيسية',
       theme: 'تبديل الوضع الليلي',
+      fontDown: 'تصغير الخط',
+      fontUp: 'تكبير الخط',
       title: 'المقاصد عند الإمام الشاطبي',
       error: 'تعذّر تحميل الصفحة.',
       retry: 'إعادة المحاولة',
@@ -23,6 +25,8 @@
       toggleTitle: 'اقرأ بالعربية',
       home: 'Home',
       theme: 'Toggle dark mode',
+      fontDown: 'Smaller text',
+      fontUp: 'Larger text',
       title: 'Al-Maqasid according to Imam al-Shatibi',
       error: 'Could not load this page.',
       retry: 'Try again',
@@ -42,11 +46,36 @@
     home: document.getElementById('home'),
     theme: document.getElementById('theme-toggle'),
     enNote: document.getElementById('en-note'),
+    fontDown: document.getElementById('font-down'),
+    fontUp: document.getElementById('font-up'),
   };
+
+  const FONT = { min: 0.8, max: 2, step: 0.1 };
+  let fontScale = clampScale(Maqasid.load().fontScale ?? 1);
 
   const cache = new Map();
   let state = initialState();
   let renderToken = 0;
+
+  function clampScale(n) {
+    n = Number(n);
+    if (!Number.isFinite(n)) return 1;
+    return Math.round(Math.min(Math.max(n, FONT.min), FONT.max) * 10) / 10;
+  }
+
+  function applyFontScale() {
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+    el.fontDown.disabled = fontScale <= FONT.min;
+    el.fontUp.disabled = fontScale >= FONT.max;
+  }
+
+  function changeFont(delta) {
+    const next = clampScale(fontScale + delta);
+    if (next === fontScale) return;
+    fontScale = next;
+    Maqasid.save({ fontScale });
+    applyFontScale();
+  }
 
   function clampPage(n) {
     n = parseInt(n, 10);
@@ -127,6 +156,10 @@
     el.home.title = t.home;
     el.theme.setAttribute('aria-label', t.theme);
     el.theme.title = t.theme;
+    for (const [btn, label] of [[el.fontDown, t.fontDown], [el.fontUp, t.fontUp], [el.prev, t.prev], [el.next, t.next]]) {
+      btn.setAttribute('aria-label', label);
+      btn.title = label;
+    }
     el.counter.textContent = `${state.page} ${t.of} ${TOTAL}`;
     el.enNote.hidden = state.lang !== 'en';
 
@@ -211,6 +244,9 @@
   el.next.addEventListener('click', () => goTo(state.page + 1));
   el.lang.addEventListener('click', () => setLang(state.lang === 'ar' ? 'en' : 'ar'));
   Maqasid.bindThemeToggle(el.theme);
+  el.fontDown.addEventListener('click', () => changeFont(-FONT.step));
+  el.fontUp.addEventListener('click', () => changeFont(FONT.step));
+  applyFontScale();
 
   window.addEventListener('hashchange', () => {
     const next = parseHash();
