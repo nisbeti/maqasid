@@ -1,5 +1,7 @@
 (() => {
   const TOTAL = Maqasid.TOTAL_PAGES;
+  // Book pages reuse this script's ?v= so bumping it also refreshes cached page text.
+  const VERSION = new URL(document.currentScript.src).search;
   const LABELS = {
     ar: {
       page: 'صفحة',
@@ -103,7 +105,7 @@
   async function fetchPage(lang, page) {
     const key = `${lang}/${page}`;
     if (!cache.has(key)) {
-      const promise = fetch(`${key}.html`)
+      const promise = fetch(`${key}.html${VERSION}`)
         .then((res) => {
           if (!res.ok) throw new Error(res.status);
           return res.text();

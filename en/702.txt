@@ -1,14 +1,14 @@
-{ The adulteress and the adulterer, lash each one of them with a hundred lashes } ... 2 ... An-Nur ... 223
-{ "Am I not your Lord?" They said, "Yes, we bear witness." Lest you say on the Day of Resurrection, "Indeed, we were of this unaware." } ... 172 ... Al-A'raf ... 175, 180
-{ * Allah, who has subjected the sea for you to sail the ships therein by His command and to seek of His bounty } ... 12 ... Al-Jathiya ... 273
-{ Allah is the Creator of all things } ... 62 ... Az-Zumar ... 347
-{ Allah takes the souls at the time of their death } ... 42 ... Az-Zumar ... 523
-{ This day I have perfected for you your religion } ... 3 ... Al-Ma'idah ... 150, 352, 353, 356, 482
-{ * Indeed, mankind was created anxious (19) When evil touches him, he is impatient (20) And when good touches him, he withholds (21) } ... 19, 20, 21 ... Al-Ma'arij ... 286
-{ Indeed, the judgment is only for Allah. He has commanded that you not worship except Him } ... 40 ... Yusuf ... 6
-{ Indeed, those for whom has preceded [the decree of] good from Us } ... 101 ... Al-Anbiya ... 345
-{ Indeed, those who do not believe in the Hereafter name the angels female names (27) And they have no knowledge of it. They follow not except assumption, and indeed, assumption avails not against the truth at all } ... 27, 28 ... An-Najm ... 495
-{ Indeed, those who abuse Allah and His Messenger, Allah has cursed them in this world and the Hereafter } ... 57 ... Al-Ahzab ... 367
+{ The adulteress and the adulterer, lash each one of them with a hundred lashes } ... 2 ... An-Nur ... 281
+{ "Am I not your Lord?" They said, "Yes, we bear witness." Lest you say on the Day of Resurrection, "Indeed, we were of this unaware." } ... 172 ... Al-A'raf ... 218, 224
+{ * Allah, who has subjected the sea for you to sail the ships therein by His command and to seek of His bounty } ... 12 ... Al-Jathiya ... 341
+{ Allah is the Creator of all things } ... 62 ... Az-Zumar ... 440
+{ Allah takes the souls at the time of their death } ... 42 ... Az-Zumar ... 673
+{ This day I have perfected for you your religion } ... 3 ... Al-Ma'idah ... 186, 446, 447, 452, 617
+{ * Indeed, mankind was created anxious (19) When evil touches him, he is impatient (20) And when good touches him, he withholds (21) } ... 19, 20, 21 ... Al-Ma'arij ... 358
+{ Indeed, the judgment is only for Allah. He has commanded that you not worship except Him } ... 40 ... Yusuf ... 2
+{ Indeed, those for whom has preceded [the decree of] good from Us } ... 101 ... Al-Anbiya ... 437
+{ Indeed, those who do not believe in the Hereafter name the angels female names (27) And they have no knowledge of it. They follow not except assumption, and indeed, assumption avails not against the truth at all } ... 27, 28 ... An-Najm ... 634
+{ Indeed, those who abuse Allah and His Messenger, Allah has cursed them in this world and the Hereafter } ... 57 ... Al-Ahzab ... 468
 { Indeed, Satan is to you a enemy; so take him as an enemy } ... 6 ... Fatir
 __________
 (1) An-Nur 24:2

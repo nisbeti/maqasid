@@ -268,6 +268,16 @@ button, select {
   text-align: start;
 }
 
+/* Page references in the indexes at the back of the book */
+.reader a.ref {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  padding: 0.15em 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
 .reader .error {
   text-align: center;
   color: var(--muted);
