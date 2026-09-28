@@ -1,7 +1,7 @@
 // Shared helpers: persisted state and the dark/light theme toggle.
 const Maqasid = (() => {
   const KEY = 'maqasid';
-  const TOTAL_PAGES = 723;
+  const TOTAL_PAGES = 715;
 
   function load() {
     try {
