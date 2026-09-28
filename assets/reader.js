@@ -197,8 +197,19 @@
 
     if (scroll) window.scrollTo({ top: 0 });
 
-    // Warm the cache for the likely next page.
-    if (page < TOTAL) fetchPage(lang, page + 1).catch(() => {});
+    preloadNeighbours(lang, page);
+  }
+
+  // Fetch likely next destinations while the connection is known to be
+  // alive. Some networks silently drop idle connections, and the browser
+  // then stalls ~10s before reconnecting, so a request made later (after
+  // the reader has been reading a while) can be slow.
+  function preloadNeighbours(lang, page) {
+    const other = lang === 'ar' ? 'en' : 'ar';
+    const targets = [[lang, page + 1], [lang, page + 2], [lang, page - 1], [other, page]];
+    for (const [l, p] of targets) {
+      if (p >= 1 && p <= TOTAL) fetchPage(l, p).catch(() => {});
+    }
   }
 
   function showError() {
