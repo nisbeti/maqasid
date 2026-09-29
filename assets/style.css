@@ -234,6 +234,9 @@ button, select {
 .reader article {
   transition: opacity 0.18s ease;
 }
+
+/* Keep a page that is being swiped off-screen from widening the page. */
+body { overflow-x: clip; }
 .reader.loading article { opacity: 0.25; }
 
 .reader p {

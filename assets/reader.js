@@ -293,24 +293,83 @@
     goTo(state.page + (e.key === forwardKey ? 1 : -1));
   });
 
-  // Swipe: like turning a physical page. Arabic books open right-to-left,
-  // so swiping right moves forward in Arabic; swiping left moves forward in English.
+  // Swipe: like turning a physical page, and like the adhkar pages. The page
+  // follows the finger; let go past a third of the screen (or flick) and it
+  // slides off while the next page slides in from the other side, otherwise
+  // it springs back. Arabic books open right-to-left, so swiping right moves
+  // forward in Arabic; swiping left moves forward in English.
+  const isForward = (dx) => (state.lang === 'ar' ? dx > 0 : dx < 0);
+  const EASE = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
   let touch = null;
+  let turning = false;
+
+  function slideTo(x, ms) {
+    const from = el.reader.style.transform || 'none';
+    const to = x ? `translateX(${x}px)` : 'none';
+    el.reader.style.transform = x ? to : '';
+    return el.reader
+      .animate([{ transform: from }, { transform: to }], { duration: ms, easing: EASE })
+      .finished.catch(() => {});
+  }
+
+  async function turnPage(page, sign) {
+    turning = true;
+    const w = window.innerWidth;
+    await slideTo(sign * w, 180);
+    state = { ...state, page };
+    await render();
+    el.reader.style.transform = `translateX(${-sign * w}px)`;
+    await slideTo(0, 260);
+    turning = false;
+  }
+
   el.reader.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1) { touch = null; return; }
-    touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+    if (e.touches.length !== 1 || turning) { touch = null; return; }
+    touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now(), dir: null };
+  }, { passive: true });
+
+  el.reader.addEventListener('touchmove', (e) => {
+    if (!touch || touch.dir === 'v' || reduceMotion.matches) return;
+    if (e.touches.length !== 1) { touch.dir = 'v'; slideTo(0, 200); return; }
+    const dx = e.touches[0].clientX - touch.x;
+    const dy = e.touches[0].clientY - touch.y;
+    if (!touch.dir) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      const horizontal = Math.abs(dx) > Math.abs(dy) * 1.2 && !window.getSelection()?.toString();
+      touch.dir = horizontal ? 'h' : 'v';
+      if (!horizontal) return;
+    }
+    const target = state.page + (isForward(dx) ? 1 : -1);
+    const x = target < 1 || target > TOTAL ? dx / 3 : dx; // resist at the first/last page
+    el.reader.style.transform = `translateX(${x}px)`;
   }, { passive: true });
 
   el.reader.addEventListener('touchend', (e) => {
-    if (!touch) return;
-    const dx = e.changedTouches[0].clientX - touch.x;
-    const dy = e.changedTouches[0].clientY - touch.y;
-    const quick = Date.now() - touch.t < 800;
+    const t = touch;
     touch = null;
-    if (!quick || Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-    if (window.getSelection()?.toString()) return;
-    const forward = state.lang === 'ar' ? dx > 0 : dx < 0;
-    goTo(state.page + (forward ? 1 : -1));
+    if (!t) return;
+    const dx = e.changedTouches[0].clientX - t.x;
+    const dy = e.changedTouches[0].clientY - t.y;
+    const target = clampPage(state.page + (isForward(dx) ? 1 : -1));
+
+    if (reduceMotion.matches) {
+      // No sliding: a quick horizontal swipe just changes the page.
+      if (Date.now() - t.t > 800 || Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      if (window.getSelection()?.toString()) return;
+      goTo(target);
+      return;
+    }
+    if (t.dir !== 'h') return;
+
+    const far = Math.abs(dx) > window.innerWidth / 3;
+    const flick = Math.abs(dx) > 40 && Date.now() - t.t < 300;
+    if (target !== state.page && (far || flick)) turnPage(target, Math.sign(dx));
+    else slideTo(0, 200);
+  }, { passive: true });
+
+  el.reader.addEventListener('touchcancel', () => {
+    if (touch?.dir === 'h') slideTo(0, 200);
+    touch = null;
   }, { passive: true });
 
   render();
