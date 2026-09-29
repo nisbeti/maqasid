@@ -294,43 +294,97 @@
   });
 
   // Swipe: like turning a physical page, and like the adhkar pages. The page
-  // follows the finger; let go past a third of the screen (or flick) and it
-  // slides off while the next page slides in from the other side, otherwise
-  // it springs back. Arabic books open right-to-left, so swiping right moves
+  // follows the finger with the neighbouring page alongside it; let go past a
+  // third of the screen (or flick) and the pair slides across, otherwise they
+  // spring back. Arabic books open right-to-left, so swiping right moves
   // forward in Arabic; swiping left moves forward in English.
   const isForward = (dx) => (state.lang === 'ar' ? dx > 0 : dx < 0);
   const EASE = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
+  const topbar = document.querySelector('.topbar');
   let touch = null;
   let turning = false;
 
-  function slideTo(x, ms) {
-    const from = el.reader.style.transform || 'none';
+  // A copy of the neighbouring page, drawn beside the real one while swiping.
+  const peek = document.createElement('div');
+  peek.className = 'page-peek';
+  peek.setAttribute('aria-hidden', 'true');
+  peek.hidden = true;
+  document.body.append(peek);
+  let peekPage = null;
+
+  function showPeek(page) {
+    if (peekPage === page) return;
+    peekPage = page;
+    peek.replaceChildren();
+    peek.hidden = page === null;
+    if (page === null) return;
+    peek.style.top = `${topbar.getBoundingClientRect().bottom}px`;
+    const lang = state.lang;
+    fetchPage(lang, page).then((source) => {
+      if (peekPage !== page || state.lang !== lang) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'reader';
+      const article = document.createElement('article');
+      article.append(...decorate(source.cloneNode(true)).childNodes);
+      wrap.append(article);
+      if (lang === 'en') {
+        const note = el.enNote.cloneNode(true);
+        note.removeAttribute('id');
+        note.hidden = false;
+        wrap.append(note);
+      }
+      peek.replaceChildren(wrap);
+    }).catch(() => {});
+  }
+
+  function hidePeek() {
+    showPeek(null);
+    peek.style.transform = '';
+  }
+
+  function slide(node, x, ms) {
+    const from = node.style.transform || 'none';
     const to = x ? `translateX(${x}px)` : 'none';
-    el.reader.style.transform = x ? to : '';
-    return el.reader
+    node.style.transform = x ? to : '';
+    return node
       .animate([{ transform: from }, { transform: to }], { duration: ms, easing: EASE })
       .finished.catch(() => {});
   }
 
+  function springBack(sign) {
+    Promise.all([
+      slide(el.reader, 0, 200),
+      peekPage === null ? null : slide(peek, -sign * window.innerWidth, 200),
+    ]).then(() => { if (!touch && !turning) hidePeek(); });
+  }
+
   async function turnPage(page, sign) {
     turning = true;
-    const w = window.innerWidth;
-    await slideTo(sign * w, 180);
+    showPeek(page);
+    await Promise.all([
+      slide(el.reader, sign * window.innerWidth, 240),
+      slide(peek, 0, 240),
+    ]);
     state = { ...state, page };
     await render();
-    el.reader.style.transform = `translateX(${-sign * w}px)`;
-    await slideTo(0, 260);
+    el.reader.style.transform = '';
+    hidePeek();
     turning = false;
   }
 
   el.reader.addEventListener('touchstart', (e) => {
     if (e.touches.length !== 1 || turning) { touch = null; return; }
-    touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now(), dir: null };
+    touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now(), dir: null, sign: 1 };
   }, { passive: true });
 
   el.reader.addEventListener('touchmove', (e) => {
     if (!touch || touch.dir === 'v' || reduceMotion.matches) return;
-    if (e.touches.length !== 1) { touch.dir = 'v'; slideTo(0, 200); return; }
+    if (e.touches.length !== 1) {
+      const wasDragging = touch.dir === 'h';
+      touch.dir = 'v';
+      if (wasDragging) springBack(touch.sign);
+      return;
+    }
     const dx = e.touches[0].clientX - touch.x;
     const dy = e.touches[0].clientY - touch.y;
     if (!touch.dir) {
@@ -339,9 +393,17 @@
       touch.dir = horizontal ? 'h' : 'v';
       if (!horizontal) return;
     }
+    const sign = dx < 0 ? -1 : 1;
+    touch.sign = sign;
     const target = state.page + (isForward(dx) ? 1 : -1);
-    const x = target < 1 || target > TOTAL ? dx / 3 : dx; // resist at the first/last page
-    el.reader.style.transform = `translateX(${x}px)`;
+    if (target < 1 || target > TOTAL) {
+      hidePeek();
+      el.reader.style.transform = `translateX(${dx / 3}px)`; // resist at the first/last page
+      return;
+    }
+    showPeek(target);
+    el.reader.style.transform = `translateX(${dx}px)`;
+    peek.style.transform = `translateX(${dx - sign * window.innerWidth}px)`;
   }, { passive: true });
 
   el.reader.addEventListener('touchend', (e) => {
@@ -363,12 +425,12 @@
 
     const far = Math.abs(dx) > window.innerWidth / 3;
     const flick = Math.abs(dx) > 40 && Date.now() - t.t < 300;
-    if (target !== state.page && (far || flick)) turnPage(target, Math.sign(dx));
-    else slideTo(0, 200);
+    if (target !== state.page && (far || flick)) turnPage(target, dx < 0 ? -1 : 1);
+    else springBack(t.sign);
   }, { passive: true });
 
   el.reader.addEventListener('touchcancel', () => {
-    if (touch?.dir === 'h') slideTo(0, 200);
+    if (touch?.dir === 'h') springBack(touch.sign);
     touch = null;
   }, { passive: true });
 

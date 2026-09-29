@@ -237,6 +237,17 @@ button, select {
 
 /* Keep a page that is being swiped off-screen from widening the page. */
 body { overflow-x: clip; }
+
+/* The neighbouring page, shown beside the current one while swiping. */
+.page-peek {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+}
 .reader.loading article { opacity: 0.25; }
 
 .reader p {
