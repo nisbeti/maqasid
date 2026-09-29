@@ -176,7 +176,21 @@
     el.next.disabled = state.page >= TOTAL;
   }
 
-  async function render({ scroll = true } = {}) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Gentle page turn: the new page fades in and drifts a few pixels from the
+  // side the reader is turning towards (mirrored for Arabic).
+  function animateIn(dir) {
+    if (!dir || reduceMotion.matches || !el.article.animate) return;
+    const forwardFrom = state.lang === 'ar' ? -1 : 1;
+    const x = 24 * dir * forwardFrom;
+    el.article.animate(
+      [{ opacity: 0, transform: `translateX(${x}px)` }, { opacity: 1, transform: 'none' }],
+      { duration: 260, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' }
+    );
+  }
+
+  async function render({ scroll = true, dir = 0 } = {}) {
     const token = ++renderToken;
     const { lang, page } = state;
 
@@ -190,6 +204,7 @@
       if (token !== renderToken) return;
       const article = decorate(source.cloneNode(true));
       el.article.replaceChildren(...article.childNodes);
+      animateIn(dir);
     } catch {
       if (token !== renderToken) return;
       showError();
@@ -232,8 +247,9 @@
   function goTo(page) {
     page = clampPage(page);
     if (page === state.page) return;
+    const dir = page > state.page ? 1 : -1;
     state = { ...state, page };
-    render();
+    render({ dir });
   }
 
   function setLang(lang) {
