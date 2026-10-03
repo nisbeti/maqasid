@@ -1,14 +1,15 @@
-{ When the victory of Allah has come and the conquest } ... 1 ... al-Nasr ... 452
-{ When you receive it with your tongues and say with your mouths what you have no knowledge of, and you think it is trivial, while it is great in the sight of Allah } ... 15 ... al-Nur ... 283, 663
-{ When evil touches him, he is despairing } ... 20 ... al-Ma'arij ... 358
-{ Permission is granted to those who are fought against because they have been wronged } ... 39 ... al-Hajj ... 218, 223
-{ Did you think that We created you in vain } ... 115 ... al-Mu'minun ... 318
-{ Have you seen the one who has taken as his god his desire, and Allah has led him astray despite his knowledge } ... 23 ... al-Jathiya ... 293
-{ Is he who is upon clear evidence from his Lord like one to whom his evil deed has been made attractive, and they follow their desires } ... 14 ... Muhammad ... 293
-{ Establish prayer at the decline of the sun } ... 78 ... al-Isra ... 69
-{ Establish prayer } ... 11, 43, 83 ... al-Baqarah and others ... 171, 620, 648
-{ Except seeking the face of his Lord, the Most High } ... 20 ... al-Lail ... 361
+{ When the victory of Allah has come and the conquest } ... 1 ... victory ... 452
+{ When you receive it with your tongues and say with your mouths what you have no knowledge of, and you think it is trivial, while it is great in the sight of Allah. } ... 15 ... An-Nur ... 283, 663
+{ When evil touches him, he is despairing } ... 20 ... Al-Ma'arij ... 358
+{ Permission is granted to those who are fought against because they have been wronged } ... 39 ... Al-Hajj ... 218, 223
+{ Did you think that We created you in vain } ... 115 ... Al-Mu'minun ... 318
+{ Have you seen the one who has taken as his god his own desire, and Allah has led him astray despite his knowledge? } ... 23 ... Al-Jathiya ... 293
+{ Is one who is on clear proof from his Lord like one to whom his evil deed has been made attractive, and who follows his desires? } ... 14 ... Muhammad ... 293
+{ Establish the prayer at the decline of the sun } ... 78 ... Al-Isra ... 69
+{ Establish the prayer } ... 11, 43, 83 ... Al-Baqarah and others ... 171, 620, 648
+{ Except to seek the face of his Lord, the Most High } ... 20 ... Al-Lail ... 361
 { Except as a reminder } ... 3 ... Ta-Ha ... 175
-{ If you do not march forth, He will punish you with a painful punishment } ... 39 ... al-Tawbah ... 306
-{ He who created death and life to test you as to which of you is best in deed } ... 2 ... al-Mulk ... 161, 217, 222
-{ Those who consume usury will not rise except as one rises whom Satan has struck with madness by his touch. That is because they say, "Trade is just like usury," but Allah has permitted trade and has forbidden usury } ... 275 ... al-Baqarah ... 671
+{ If you do not go forth, He will punish you with a painful punishment } ... 39 ... At-Tawbah ... 306
+{
+He who created death and life to test you as to which of you is best in deed. } ... 2 ... Al-Mulk ... 161, 217, 222
+{ Those who consume usury (riba) will not stand on the Day of Resurrection except as one stands who is being beaten by Satan into insanity. That is because they say, "Trade is just like usury," but Allah has permitted trade and has forbidden usury. } ... 275 ... Al-Baqarah ... 671

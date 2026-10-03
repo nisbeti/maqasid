@@ -1,16 +1,17 @@
-{ He said, "Indeed, I am among those who dislike your work." } ... 168 ... Ash-Shu'ara ... 283, 663
-{ He said, "Did you not believe?" He said, "Yes, but so that my heart may be at ease." } ... 260 ... Al-Baqarah ... 467
+{ He said, "Indeed, I am of those who dislike your work." } ... 168 ... Ash-Shu'ara ... 283, 663
+{ He said, "Did you not believe?" He said, "Yes, but so that my heart may be at peace." } ... 260 ... Al-Baqarah ... 467
 { * The Bedouins said, "We have believed." } ... 14 ... Al-Hujurat ... 467
-{ They said, "We were not of those who prayed (43) and we did not use to feed the poor." } ... 43, 44 ... Al-Muddathir ... 466
+{ They said, "We were not among those who prayed (43) and we did not feed the poor." } ... 43, 44 ... Al-Muddathir ... 466
 { Say, "Believe in it or do not believe." } ... 107 ... Al-Isra ... 428
-{ Say, "My Lord knows their number; none knows them except for a few." } ... 22 ... Al-Kahf ... 466
-{ * Say, "Be stones or iron." } ... 50 ... Al-Isra ... 418, 428
-{ Say, "You did not believe, but say, 'We have submitted,' while faith has not yet entered your hearts." } ... 14 ... Al-Hujurat ... 467
+{ Say, "My Lord knows best their number; none knows them except for a few." } ... 22 ... Al-Kahf ... 466
+{ "Say, 'Be stones or iron' } ... 50 ... Al-Isra ... 418, 428
+{ Say, "You have not believed, but say, 'We have submitted,' for faith has not yet entered your hearts." } ... 14 ... Al-Hujurat ... 467
 { Say, "Bring forth your proof if you are among the truthful." } ... 111 ... Al-Baqarah ... 635
-64 ... An-Naml
-{ Say, "This is my way; I invite to Allah with insight, I and whoever follows me." } ... 108 ... Yusuf
-{ Say, "Do you have any knowledge that you can produce for us? You follow not except assumption, and you are not but conjecturing." } ... 148 ... Al-An'am ... 635
-{ O you who have believed, decreed upon you is fasting as it was decreed upon those before you that you may become righteous. } ... 183 ... Al-Baqarah ... 218, 223, 544, 670
-{ Fighting has been decreed upon you while it is hateful to you. } ... 216 ... Al-Baqarah ... 545
-{ So that it does not become a commodity between the rich among you. } ... 7 ... Al-Hashr ... 71
-[The rest of the index of Qur'anic verses could not be recovered from the source text and has been omitted.]
+64 ... The Ants
+{ Say, "This is my path; I invite to Allah with insight, I and whoever follows me." } ... 108 ... Yusuf
+{ Say, "Do you have any knowledge that you can bring forth to us? You follow nothing but conjecture, and you are nothing but liars." } ... 148 ... Al-An'am ... 635
+{
+Fasting has been prescribed for you as it was prescribed for those before you, so that you may attain piety. { } ... 183 ... Al-Baqarah ... 218, 223, 544, 670
+{ Fighting has been prescribed for you, and it is a great hardship for you } ... 216 ... Al-Baqarah ... 545
+{ So that it does not become a commodity among the rich from among you } ... 7 ... Al-Hashr ... 71
+It was impossible to extract the remainder of the index of verses from the source due to damage to the text, so it has been omitted.
