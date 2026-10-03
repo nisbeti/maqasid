@@ -34,6 +34,8 @@ body {
   font-family: "Amiri", "Times New Roman", serif;
   font-size: 1.15rem;
   line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s, color 0.2s;
 }
 
