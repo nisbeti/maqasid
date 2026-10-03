@@ -432,6 +432,12 @@ body.reader-page .bottombar {
 #size-tip {
   position: fixed;
   z-index: 30;
+  /*
+    It is a tip, not something to get past. It lies over the page, so taking
+    presses would swallow a swipe that began on it, and a tap meant for the
+    text. Only its own button answers.
+  */
+  pointer-events: none;
   width: min(16rem, calc(100vw - 2rem));
   padding: 0.8rem 0.95rem 0.75rem;
   border-radius: 14px;
@@ -458,6 +464,7 @@ body.reader-page .bottombar {
 #size-tip p { margin: 0 0 0.6rem; }
 #size-tip .size-tip-actions { display: flex; justify-content: flex-end; }
 #size-tip .size-tip-close {
+  pointer-events: auto;
   background: var(--accent-text);
   color: var(--accent);
   border: 0;

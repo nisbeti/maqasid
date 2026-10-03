@@ -56,7 +56,6 @@
 
   const cache = new Map();
   let state = initialState();
-  let renderToken = 0;
 
   function clampScale(n) {
     n = Number(n);
@@ -271,7 +270,12 @@
 
     const slide = currentSlide();
     slide.el.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
-    requestAnimationFrame(() => { el.reader.style.scrollSnapType = ''; });
+    // A frame, or a turn of the loop where no frame comes: a tab in the
+    // background gets no frames, and the track would be left free to scroll
+    // with nothing to come to rest on.
+    const snapBack = () => { el.reader.style.scrollSnapType = ''; };
+    requestAnimationFrame(snapBack);
+    setTimeout(snapBack);
 
     await fillSlide(slide);
     if (scrollTop) slide.el.scrollTop = scrollTop;
@@ -300,10 +304,13 @@
   // waiting for the finger to lift left that swipe nowhere to go. Rebuilding
   // keeps the same page under the finger, so it cannot be seen.
   function settle() {
-    const edge = el.reader.getBoundingClientRect().left;
-    const gap = (slide) => Math.abs(slide.el.getBoundingClientRect().left - edge);
+    const track = el.reader.getBoundingClientRect();
+    const gap = (slide) => Math.abs(slide.el.getBoundingClientRect().left - track.left);
     const nearest = [...slides.values()].reduce((best, slide) => (gap(slide) < gap(best) ? slide : best));
-    if (gap(nearest) > 2) {
+    // A fiftieth of the page, which is far inside the half that would make
+    // another slide the nearest one: a snap lands on whatever fraction of a
+    // pixel the screen rounds to, and exactness here means waiting for ever.
+    if (gap(nearest) > Math.max(4, track.width / 50)) {
       scheduleSettle();
     } else if (nearest.page !== state.page) {
       state = { ...state, page: nearest.page };
