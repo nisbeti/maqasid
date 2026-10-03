@@ -276,6 +276,35 @@ body.reader-page .bottombar {
 
 .reader .slide.loading article { opacity: 0.25; }
 
+/*
+  A fast swipe can reach a page that is still on its way. Show a spinner in
+  the middle of it rather than a blank page; it fades in after a moment, so a
+  page that arrives quickly never flashes one.
+*/
+.reader .slide.loading { position: relative; }
+
+.reader .slide.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: slide-spinner-in 0.2s ease-out 0.15s both, slide-spin 0.8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes slide-spinner-in { from { opacity: 0; } }
+@keyframes slide-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .reader .slide.loading::before { animation: slide-spinner-in 0.2s ease-out 0.15s both, slide-spin 2.4s linear infinite; }
+}
+
 .reader p {
   margin: 0 0 0.9em;
   text-align: justify;

@@ -190,7 +190,7 @@
 
   function makeSlide(lang, page) {
     const node = document.createElement('div');
-    node.className = 'slide';
+    node.className = 'slide loading'; // until fillSlide has put its page in
     const article = document.createElement('article');
     node.append(article);
     if (lang === 'en') node.append(el.noteTemplate.content.cloneNode(true));
