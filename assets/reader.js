@@ -37,7 +37,6 @@
 
   const el = {
     reader: document.getElementById('reader'),
-    article: document.getElementById('content'),
     select: document.getElementById('page-select'),
     prev: document.getElementById('prev'),
     next: document.getElementById('next'),
@@ -47,7 +46,7 @@
     lang: document.getElementById('lang-toggle'),
     home: document.getElementById('home'),
     theme: document.getElementById('theme-toggle'),
-    enNote: document.getElementById('en-note'),
+    noteTemplate: document.getElementById('en-note-template'),
     fontDown: document.getElementById('font-down'),
     fontUp: document.getElementById('font-up'),
   };
@@ -163,7 +162,6 @@
       btn.title = label;
     }
     el.counter.textContent = `${state.page} ${t.of} ${TOTAL}`;
-    el.enNote.hidden = state.lang !== 'en';
 
     if (el.select.dataset.lang !== state.lang) {
       for (const opt of el.select.options) opt.textContent = `${t.page} ${opt.value}`;
@@ -178,42 +176,100 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Gentle page turn: the new page fades in and drifts a few pixels from the
-  // side the reader is turning towards (mirrored for Arabic).
-  function animateIn(dir) {
-    if (!dir || reduceMotion.matches || !el.article.animate) return;
-    const forwardFrom = state.lang === 'ar' ? -1 : 1;
-    const x = 24 * dir * forwardFrom;
-    el.article.animate(
-      [{ opacity: 0, transform: `translateX(${x}px)` }, { opacity: 1, transform: 'none' }],
-      { duration: 260, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' }
-    );
+  // The page being read sits in a track with the pages either side of it,
+  // like the adhkar pages: the browser scrolls and snaps the track under the
+  // finger, so a swipe is as smooth as it gets, and the neighbours are already
+  // loaded when they slide in. When a swipe comes to rest on a neighbour, that
+  // page becomes the current one and the track is rebuilt around it, unseen.
+  const slides = new Map();
+  let touching = false;
+  let settleTimer = null;
+
+  const slideKey = (lang, page) => `${lang}/${page}`;
+  const currentSlide = () => slides.get(slideKey(state.lang, state.page));
+
+  function makeSlide(lang, page) {
+    const node = document.createElement('div');
+    node.className = 'slide';
+    const article = document.createElement('article');
+    node.append(article);
+    if (lang === 'en') node.append(el.noteTemplate.content.cloneNode(true));
+    return { key: slideKey(lang, page), lang, page, el: node, article, loaded: false, loading: null };
   }
 
-  async function render({ scroll = true, dir = 0 } = {}) {
-    const token = ++renderToken;
+  function showError(slide) {
+    const t = LABELS[slide.lang];
+    const msg = document.createElement('p');
+    msg.className = 'error';
+    msg.textContent = t.error;
+    const retry = document.createElement('button');
+    retry.className = 'btn';
+    retry.textContent = t.retry;
+    retry.addEventListener('click', () => fillSlide(slide));
+    const wrap = document.createElement('div');
+    wrap.className = 'error';
+    wrap.append(msg, retry);
+    slide.article.replaceChildren(wrap);
+  }
+
+  function fillSlide(slide) {
+    if (slide.loaded) return Promise.resolve();
+    if (slide.loading) return slide.loading;
+    slide.el.classList.add('loading');
+    slide.loading = fetchPage(slide.lang, slide.page)
+      .then((source) => {
+        slide.article.replaceChildren(...decorate(source.cloneNode(true)).childNodes);
+        slide.loaded = true;
+      })
+      .catch(() => {
+        // A neighbour that fails stays blank until it is the page being read.
+        if (slide.page === state.page && slide.lang === state.lang) showError(slide);
+      })
+      .finally(() => {
+        slide.loading = null;
+        slide.el.classList.remove('loading');
+      });
+    return slide.loading;
+  }
+
+  // Rebuild the track around the current page: keep the slides still wanted,
+  // make the missing ones, drop the rest, and put the track back on the current
+  // one without the reader seeing it move.
+  async function render({ keepScroll = false } = {}) {
     const { lang, page } = state;
 
     applyChrome();
     history.replaceState(null, '', `#${lang}/${page}`);
     Maqasid.save({ lang, page });
-    el.reader.classList.add('loading');
 
-    try {
-      const source = await fetchPage(lang, page);
-      if (token !== renderToken) return;
-      const article = decorate(source.cloneNode(true));
-      el.article.replaceChildren(...article.childNodes);
-      animateIn(dir);
-    } catch {
-      if (token !== renderToken) return;
-      showError();
-    } finally {
-      if (token === renderToken) el.reader.classList.remove('loading');
+    const scrollTop = keepScroll ? currentSlide()?.el.scrollTop ?? 0 : 0;
+    const wanted = [page - 1, page, page + 1]
+      .filter((p) => p >= 1 && p <= TOTAL)
+      .map((p) => slides.get(slideKey(lang, p)) ?? makeSlide(lang, p));
+
+    el.reader.style.scrollSnapType = 'none';
+    for (const [key, slide] of slides) {
+      if (!wanted.includes(slide)) {
+        slide.el.remove();
+        slides.delete(key);
+      }
     }
+    // Last to first, so that each slide goes in before one already there.
+    wanted.toReversed().forEach((slide, i) => {
+      const after = wanted[wanted.length - i];
+      slides.set(slide.key, slide);
+      if (!slide.el.isConnected) el.reader.insertBefore(slide.el, after?.el ?? null);
+      slide.el.toggleAttribute('data-current', slide.page === page);
+      slide.el.setAttribute('aria-hidden', slide.page === page ? 'false' : 'true');
+    });
 
-    if (scroll) window.scrollTo({ top: 0 });
+    const slide = currentSlide();
+    slide.el.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
+    requestAnimationFrame(() => { el.reader.style.scrollSnapType = ''; });
 
+    await fillSlide(slide);
+    if (scrollTop) slide.el.scrollTop = scrollTop;
+    wanted.forEach((neighbour) => fillSlide(neighbour));
     preloadNeighbours(lang, page);
   }
 
@@ -223,39 +279,49 @@
   // the reader has been reading a while) can be slow.
   function preloadNeighbours(lang, page) {
     const other = lang === 'ar' ? 'en' : 'ar';
-    const targets = [[lang, page + 1], [lang, page + 2], [lang, page - 1], [other, page]];
+    const targets = [[lang, page + 2], [lang, page - 2], [other, page]];
     for (const [l, p] of targets) {
       if (p >= 1 && p <= TOTAL) fetchPage(l, p).catch(() => {});
     }
   }
 
-  function showError() {
-    const t = LABELS[state.lang];
-    const msg = document.createElement('p');
-    msg.className = 'error';
-    msg.textContent = t.error;
-    const retry = document.createElement('button');
-    retry.className = 'btn';
-    retry.textContent = t.retry;
-    retry.addEventListener('click', () => render());
-    const wrap = document.createElement('div');
-    wrap.className = 'error';
-    wrap.append(msg, retry);
-    el.article.replaceChildren(wrap);
+  // Once the track is at rest on a slide that is not the current one, that
+  // page is the one being read.
+  function settle() {
+    if (touching) return;
+    const edge = el.reader.getBoundingClientRect().left;
+    const gap = (slide) => Math.abs(slide.el.getBoundingClientRect().left - edge);
+    const nearest = [...slides.values()].reduce((best, slide) => (gap(slide) < gap(best) ? slide : best));
+    if (gap(nearest) > 2) {
+      scheduleSettle();
+    } else if (nearest.page !== state.page) {
+      state = { ...state, page: nearest.page };
+      render();
+    }
+  }
+
+  function scheduleSettle() {
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settle, 150);
   }
 
   function goTo(page) {
     page = clampPage(page);
     if (page === state.page) return;
-    const dir = page > state.page ? 1 : -1;
+    const neighbour = slides.get(slideKey(state.lang, page));
+    if (neighbour && Math.abs(page - state.page) === 1) {
+      // The next page is already beside this one: slide to it.
+      neighbour.el.scrollIntoView({ behavior: reduceMotion.matches ? 'instant' : 'smooth', inline: 'start', block: 'nearest' });
+      return;
+    }
     state = { ...state, page };
-    render({ dir });
+    render();
   }
 
   function setLang(lang) {
     if (lang === state.lang) return;
     state = { ...state, lang };
-    render({ scroll: false });
+    render({ keepScroll: true });
   }
 
   // ---- Setup ----
@@ -293,146 +359,13 @@
     goTo(state.page + (e.key === forwardKey ? 1 : -1));
   });
 
-  // Swipe: like turning a physical page, and like the adhkar pages. The page
-  // follows the finger with the neighbouring page alongside it; let go past a
-  // third of the screen (or flick) and the pair slides across, otherwise they
-  // spring back. Arabic books open right-to-left, so swiping right moves
-  // forward in Arabic; swiping left moves forward in English.
-  const isForward = (dx) => (state.lang === 'ar' ? dx > 0 : dx < 0);
-  const EASE = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
-  const topbar = document.querySelector('.topbar');
-  let touch = null;
-  let turning = false;
-
-  // A copy of the neighbouring page, drawn beside the real one while swiping.
-  const peek = document.createElement('div');
-  peek.className = 'page-peek';
-  peek.setAttribute('aria-hidden', 'true');
-  peek.hidden = true;
-  document.body.append(peek);
-  let peekPage = null;
-
-  function showPeek(page) {
-    if (peekPage === page) return;
-    peekPage = page;
-    peek.replaceChildren();
-    peek.hidden = page === null;
-    if (page === null) return;
-    peek.style.top = `${topbar.getBoundingClientRect().bottom}px`;
-    const lang = state.lang;
-    fetchPage(lang, page).then((source) => {
-      if (peekPage !== page || state.lang !== lang) return;
-      const wrap = document.createElement('div');
-      wrap.className = 'reader';
-      const article = document.createElement('article');
-      article.append(...decorate(source.cloneNode(true)).childNodes);
-      wrap.append(article);
-      if (lang === 'en') {
-        const note = el.enNote.cloneNode(true);
-        note.removeAttribute('id');
-        note.hidden = false;
-        wrap.append(note);
-      }
-      peek.replaceChildren(wrap);
-    }).catch(() => {});
-  }
-
-  function hidePeek() {
-    showPeek(null);
-    peek.style.transform = '';
-  }
-
-  function slide(node, x, ms) {
-    const from = node.style.transform || 'none';
-    const to = x ? `translateX(${x}px)` : 'none';
-    node.style.transform = x ? to : '';
-    return node
-      .animate([{ transform: from }, { transform: to }], { duration: ms, easing: EASE })
-      .finished.catch(() => {});
-  }
-
-  function springBack(sign) {
-    Promise.all([
-      slide(el.reader, 0, 200),
-      peekPage === null ? null : slide(peek, -sign * window.innerWidth, 200),
-    ]).then(() => { if (!touch && !turning) hidePeek(); });
-  }
-
-  async function turnPage(page, sign) {
-    turning = true;
-    showPeek(page);
-    await Promise.all([
-      slide(el.reader, sign * window.innerWidth, 240),
-      slide(peek, 0, 240),
-    ]);
-    state = { ...state, page };
-    await render();
-    el.reader.style.transform = '';
-    hidePeek();
-    turning = false;
-  }
-
-  el.reader.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1 || turning) { touch = null; return; }
-    touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now(), dir: null, sign: 1 };
-  }, { passive: true });
-
-  el.reader.addEventListener('touchmove', (e) => {
-    if (!touch || touch.dir === 'v' || reduceMotion.matches) return;
-    if (e.touches.length !== 1) {
-      const wasDragging = touch.dir === 'h';
-      touch.dir = 'v';
-      if (wasDragging) springBack(touch.sign);
-      return;
-    }
-    const dx = e.touches[0].clientX - touch.x;
-    const dy = e.touches[0].clientY - touch.y;
-    if (!touch.dir) {
-      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
-      const horizontal = Math.abs(dx) > Math.abs(dy) * 1.2 && !window.getSelection()?.toString();
-      touch.dir = horizontal ? 'h' : 'v';
-      if (!horizontal) return;
-    }
-    const sign = dx < 0 ? -1 : 1;
-    touch.sign = sign;
-    const target = state.page + (isForward(dx) ? 1 : -1);
-    if (target < 1 || target > TOTAL) {
-      hidePeek();
-      el.reader.style.transform = `translateX(${dx / 3}px)`; // resist at the first/last page
-      return;
-    }
-    showPeek(target);
-    el.reader.style.transform = `translateX(${dx}px)`;
-    peek.style.transform = `translateX(${dx - sign * window.innerWidth}px)`;
-  }, { passive: true });
-
-  el.reader.addEventListener('touchend', (e) => {
-    const t = touch;
-    touch = null;
-    if (!t) return;
-    const dx = e.changedTouches[0].clientX - t.x;
-    const dy = e.changedTouches[0].clientY - t.y;
-    const target = clampPage(state.page + (isForward(dx) ? 1 : -1));
-
-    if (reduceMotion.matches) {
-      // No sliding: a quick horizontal swipe just changes the page.
-      if (Date.now() - t.t > 800 || Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-      if (window.getSelection()?.toString()) return;
-      goTo(target);
-      return;
-    }
-    if (t.dir !== 'h') return;
-
-    const far = Math.abs(dx) > window.innerWidth / 3;
-    const flick = Math.abs(dx) > 40 && Date.now() - t.t < 300;
-    if (target !== state.page && (far || flick)) turnPage(target, dx < 0 ? -1 : 1);
-    else springBack(t.sign);
-  }, { passive: true });
-
-  el.reader.addEventListener('touchcancel', () => {
-    if (touch?.dir === 'h') springBack(touch.sign);
-    touch = null;
-  }, { passive: true });
+  // Swiping is the track scrolling. Wait for the finger to lift and the
+  // scrolling to stop before deciding where it came to rest.
+  el.reader.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+  el.reader.addEventListener('touchend', () => { touching = false; scheduleSettle(); }, { passive: true });
+  el.reader.addEventListener('touchcancel', () => { touching = false; scheduleSettle(); }, { passive: true });
+  el.reader.addEventListener('scroll', scheduleSettle, { passive: true });
+  el.reader.addEventListener('scrollend', settle);
 
   render();
 })();

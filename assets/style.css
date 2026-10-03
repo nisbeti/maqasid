@@ -223,32 +223,56 @@ button, select {
   font-size: 1rem;
 }
 
-.reader {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 24px 16px 120px;
-  min-height: 70vh;
-  touch-action: pan-y;
+/*
+  The reader is a screen of its own: the bars above and below, and between them
+  a track of pages that the browser scrolls and snaps sideways, each page
+  scrolling up and down by itself.
+*/
+body.reader-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
-.reader article {
+body.reader-page .topbar,
+body.reader-page .bottombar {
+  position: relative;
+  flex: none;
+}
+
+.reader {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.reader::-webkit-scrollbar { display: none; }
+
+.reader .slide {
+  flex: 0 0 100%;
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: 24px 16px 48px;
+}
+
+.reader .slide > * {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.reader .slide article {
   transition: opacity 0.18s ease;
 }
 
-/* Keep a page that is being swiped off-screen from widening the page. */
-body { overflow-x: clip; }
-
-/* The neighbouring page, shown beside the current one while swiping. */
-.page-peek {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-  overflow: hidden;
-  pointer-events: none;
-}
-.reader.loading article { opacity: 0.25; }
+.reader .slide.loading article { opacity: 0.25; }
 
 .reader p {
   margin: 0 0 0.9em;
