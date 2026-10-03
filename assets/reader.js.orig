@@ -176,19 +176,13 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // How many pages either side of the one being read are kept in the track. A
-  // fast swipe can start before the last one has settled and the track been
-  // rebuilt; with only one page each side it would hit the end and stop dead,
-  // so keep enough that a run of quick swipes always has a page to land on
-  // (showing its text, or a spinner while it loads).
-  const AHEAD = 3;
-
   // The page being read sits in a track with the pages either side of it,
   // like the adhkar pages: the browser scrolls and snaps the track under the
   // finger, so a swipe is as smooth as it gets, and the neighbours are already
   // loaded when they slide in. When a swipe comes to rest on a neighbour, that
   // page becomes the current one and the track is rebuilt around it, unseen.
   const slides = new Map();
+  let touching = false;
   let settleTimer = null;
 
   const slideKey = (lang, page) => `${lang}/${page}`;
@@ -249,7 +243,7 @@
     Maqasid.save({ lang, page });
 
     const scrollTop = keepScroll ? currentSlide()?.el.scrollTop ?? 0 : 0;
-    const wanted = Array.from({ length: AHEAD * 2 + 1 }, (_, i) => page - AHEAD + i)
+    const wanted = [page - 1, page, page + 1]
       .filter((p) => p >= 1 && p <= TOTAL)
       .map((p) => slides.get(slideKey(lang, p)) ?? makeSlide(lang, p));
 
@@ -275,10 +269,7 @@
 
     await fillSlide(slide);
     if (scrollTop) slide.el.scrollTop = scrollTop;
-    // Nearest first, so the pages most likely to be swiped to arrive first.
-    wanted
-      .toSorted((a, b) => Math.abs(a.page - page) - Math.abs(b.page - page))
-      .forEach((neighbour) => fillSlide(neighbour));
+    wanted.forEach((neighbour) => fillSlide(neighbour));
     preloadNeighbours(lang, page);
   }
 
@@ -288,18 +279,16 @@
   // the reader has been reading a while) can be slow.
   function preloadNeighbours(lang, page) {
     const other = lang === 'ar' ? 'en' : 'ar';
-    const targets = [[lang, page + AHEAD + 1], [lang, page - AHEAD - 1], [other, page]];
+    const targets = [[lang, page + 2], [lang, page - 2], [other, page]];
     for (const [l, p] of targets) {
       if (p >= 1 && p <= TOTAL) fetchPage(l, p).catch(() => {});
     }
   }
 
   // Once the track is at rest on a slide that is not the current one, that
-  // page is the one being read. This runs even with a finger on the screen: a
-  // fast reader's next swipe often starts before the last one has settled, and
-  // waiting for the finger to lift left that swipe nowhere to go. Rebuilding
-  // keeps the same page under the finger, so it cannot be seen.
+  // page is the one being read.
   function settle() {
+    if (touching) return;
     const edge = el.reader.getBoundingClientRect().left;
     const gap = (slide) => Math.abs(slide.el.getBoundingClientRect().left - edge);
     const nearest = [...slides.values()].reduce((best, slide) => (gap(slide) < gap(best) ? slide : best));
@@ -321,8 +310,7 @@
     if (page === state.page) return;
     const neighbour = slides.get(slideKey(state.lang, page));
     if (neighbour && Math.abs(page - state.page) === 1) {
-      // The next page is already beside this one: slide to it. (Further pages
-      // in the track jump instead, rather than gliding past the ones between.)
+      // The next page is already beside this one: slide to it.
       neighbour.el.scrollIntoView({ behavior: reduceMotion.matches ? 'instant' : 'smooth', inline: 'start', block: 'nearest' });
       return;
     }
@@ -371,10 +359,11 @@
     goTo(state.page + (e.key === forwardKey ? 1 : -1));
   });
 
-  // Swiping is the track scrolling. Wait for the scrolling to stop before
-  // deciding where it came to rest.
-  el.reader.addEventListener('touchend', scheduleSettle, { passive: true });
-  el.reader.addEventListener('touchcancel', scheduleSettle, { passive: true });
+  // Swiping is the track scrolling. Wait for the finger to lift and the
+  // scrolling to stop before deciding where it came to rest.
+  el.reader.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+  el.reader.addEventListener('touchend', () => { touching = false; scheduleSettle(); }, { passive: true });
+  el.reader.addEventListener('touchcancel', () => { touching = false; scheduleSettle(); }, { passive: true });
   el.reader.addEventListener('scroll', scheduleSettle, { passive: true });
   el.reader.addEventListener('scrollend', settle);
 
