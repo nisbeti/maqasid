@@ -189,6 +189,8 @@
   // page becomes the current one and the track is rebuilt around it, unseen.
   const slides = new Map();
   let settleTimer = null;
+  let settleFrame = null;
+  let lastScrollLeft = null;
 
   const slideKey = (lang, page) => `${lang}/${page}`;
   const currentSlide = () => slides.get(slideKey(state.lang, state.page));
@@ -323,6 +325,37 @@
     settleTimer = setTimeout(settle, 150);
   }
 
+  /*
+    Look as soon as the track stops moving, not only once it has been quiet for
+    a while. A reader's next swipe usually begins before the one before it has
+    finished, and every scroll event put the wait off again, so through a run
+    of quick swipes the track was never rebuilt: the reader ran off the end of
+    it and bounced there, with the page number and the dropdown left behind on
+    the page the run started from, and no page ever new enough to show its
+    spinner.
+
+    At rest means the position held still from one frame to the next. Merely
+    passing through a page's alignment is not rest: adopting a page mid-flight
+    rebuilds the track under the momentum that is still running, and the swipe
+    carries on into the page after it.
+  */
+  function settleSoon() {
+    if (settleFrame !== null) return;
+
+    settleFrame = requestAnimationFrame(() => {
+      settleFrame = null;
+
+      const at = el.reader.scrollLeft;
+
+      if (at === lastScrollLeft) {
+        settle();
+      } else {
+        lastScrollLeft = at;
+        settleSoon();
+      }
+    });
+  }
+
   function goTo(page) {
     page = clampPage(page);
     if (page === state.page) return;
@@ -380,9 +413,9 @@
 
   // Swiping is the track scrolling. Wait for the scrolling to stop before
   // deciding where it came to rest.
-  el.reader.addEventListener('touchend', scheduleSettle, { passive: true });
-  el.reader.addEventListener('touchcancel', scheduleSettle, { passive: true });
-  el.reader.addEventListener('scroll', scheduleSettle, { passive: true });
+  el.reader.addEventListener('touchend', settleSoon, { passive: true });
+  el.reader.addEventListener('touchcancel', settleSoon, { passive: true });
+  el.reader.addEventListener('scroll', settleSoon, { passive: true });
   el.reader.addEventListener('scrollend', settle);
 
   render();
