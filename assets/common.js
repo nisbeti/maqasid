@@ -1,7 +1,9 @@
 // Shared helpers: persisted state and the dark/light theme toggle.
-const Maqasid = (() => {
-  const KEY = 'maqasid';
-  const TOTAL_PAGES = 715;
+// Book-specific values (storage key, page count, titles) come from book.js,
+// which build_site.py generates from the site's book.json.
+const Site = (() => {
+  const KEY = window.BOOK.storageKey;
+  const TOTAL_PAGES = window.BOOK.totalPages;
 
   function load() {
     try {

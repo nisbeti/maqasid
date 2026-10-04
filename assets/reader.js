@@ -1,5 +1,5 @@
 (() => {
-  const TOTAL = Maqasid.TOTAL_PAGES;
+  const TOTAL = Site.TOTAL_PAGES;
   // Book pages reuse this script's ?v= so bumping it also refreshes cached page text.
   const VERSION = new URL(document.currentScript.src).search;
   const LABELS = {
@@ -14,9 +14,14 @@
       theme: 'تبديل الوضع الليلي',
       fontDown: 'تصغير الخط',
       fontUp: 'تكبير الخط',
-      title: 'المقاصد عند الإمام الشاطبي',
+      title: window.BOOK.title.ar,
       error: 'تعذّر تحميل الصفحة.',
       retry: 'إعادة المحاولة',
+      contents: 'المحتويات',
+      goToPage: 'انتقل إلى صفحة',
+      go: 'اذهب',
+      close: 'إغلاق',
+      expand: 'عرض الأقسام',
     },
     en: {
       page: 'Page',
@@ -29,15 +34,30 @@
       theme: 'Toggle dark mode',
       fontDown: 'Smaller text',
       fontUp: 'Larger text',
-      title: 'Al-Maqasid according to Imam al-Shatibi',
+      title: window.BOOK.title.en,
       error: 'Could not load this page.',
       retry: 'Try again',
+      contents: 'Contents',
+      goToPage: 'Go to page',
+      go: 'Go',
+      close: 'Close',
+      expand: 'Show sections',
     },
   };
 
   const el = {
     reader: document.getElementById('reader'),
-    select: document.getElementById('page-select'),
+    contentsBtn: document.getElementById('contents-btn'),
+    contentsLabel: document.querySelector('#contents-btn .contents-label'),
+    contents: document.getElementById('contents'),
+    contentsTitle: document.getElementById('contents-title'),
+    contentsClose: document.getElementById('contents-close'),
+    contentsList: document.getElementById('contents-list'),
+    pageJump: document.getElementById('page-jump'),
+    pageJumpLabel: document.querySelector('#page-jump .page-jump-label'),
+    pageInput: document.getElementById('page-input'),
+    pageTotal: document.querySelector('#page-jump .page-total'),
+    pageGo: document.querySelector('#page-jump .page-go'),
     prev: document.getElementById('prev'),
     next: document.getElementById('next'),
     prevLabel: document.querySelector('#prev .label'),
@@ -52,7 +72,7 @@
   };
 
   const FONT = { min: 0.8, max: 2, step: 0.1 };
-  let fontScale = clampScale(Maqasid.load().fontScale ?? 1);
+  let fontScale = clampScale(Site.load().fontScale ?? 1);
 
   const cache = new Map();
   let state = initialState();
@@ -73,7 +93,7 @@
     const next = clampScale(fontScale + delta);
     if (next === fontScale) return;
     fontScale = next;
-    Maqasid.save({ fontScale });
+    Site.save({ fontScale });
     applyFontScale();
   }
 
@@ -86,7 +106,7 @@
   function initialState() {
     const fromHash = parseHash();
     if (fromHash) return fromHash;
-    const saved = Maqasid.load();
+    const saved = Site.load();
     return {
       lang: saved.lang === 'en' ? 'en' : 'ar',
       page: clampPage(saved.page || 1),
@@ -96,7 +116,7 @@
   function parseHash() {
     const m = location.hash.match(/^#(ar|en)(?:\/(\d+))?$/);
     if (!m) return null;
-    const saved = Maqasid.load();
+    const saved = Site.load();
     return { lang: m[1], page: clampPage(m[2] || saved.page || 1) };
   }
 
@@ -122,8 +142,13 @@
   }
 
   // Lines of underscores separate body text from footnotes; style them.
+  // A note can run to more than one paragraph: under the footnote
+  // separator (exactly 10 underscores), the lines after a "(n)" line stay
+  // footnotes. Longer runs are section breaks, not footnotes.
   function decorate(article) {
     let inNotes = false;
+    let inNote = false;
+    let notesSeparator = false;
     for (const p of [...article.querySelectorAll('p')]) {
       const text = p.textContent.trim();
       if (/^_{5,}$/.test(text)) {
@@ -131,8 +156,11 @@
         hr.className = 'fn-sep';
         p.replaceWith(hr);
         inNotes = true;
-      } else if (inNotes && /^\(\d+\)/.test(text)) {
+        inNote = false;
+        notesSeparator = text.length === 10;
+      } else if (inNotes && (/^\(\d+\)/.test(text) || inNote)) {
         p.classList.add('footnote');
+        inNote = notesSeparator;
       } else {
         inNotes = false;
       }
@@ -162,12 +190,7 @@
     }
     el.counter.textContent = `${state.page} ${t.of} ${TOTAL}`;
 
-    if (el.select.dataset.lang !== state.lang) {
-      for (const opt of el.select.options) opt.textContent = `${t.page} ${opt.value}`;
-      el.select.dataset.lang = state.lang;
-    }
-    el.select.value = String(state.page);
-    el.select.setAttribute('aria-label', t.page);
+    applyContentsChrome(t);
 
     el.prev.disabled = state.page <= 1;
     el.next.disabled = state.page >= TOTAL;
@@ -247,7 +270,7 @@
 
     applyChrome();
     history.replaceState(null, '', `#${lang}/${page}`);
-    Maqasid.save({ lang, page });
+    Site.save({ lang, page });
 
     const scrollTop = keepScroll ? currentSlide()?.el.scrollTop ?? 0 : 0;
     const wanted = Array.from({ length: AHEAD * 2 + 1 }, (_, i) => page - AHEAD + i)
@@ -376,21 +399,135 @@
     render({ keepScroll: true });
   }
 
+  // ---- Contents: chapters and sections (book.js contents, from
+  // contents.json), plus a box to go to a page by number. ----
+
+  const CONTENTS = (window.BOOK.contents || []).map(([level, page, ar, en], i) => ({ level, page, ar, en, i }));
+
+  // The entry the page is in: the last one starting on or before it.
+  function entryFor(page, maxLevel = 3) {
+    let found = null;
+    for (const entry of CONTENTS) {
+      if (entry.page > page) break;
+      if (entry.level <= maxLevel) found = entry;
+    }
+    return found;
+  }
+
+  function applyContentsChrome(t) {
+    // The button says where you are: the section (or chapter) you're in.
+    const here = entryFor(state.page, 2);
+    const title = here ? here[state.lang] : `${t.page} ${state.page}`;
+    el.contentsLabel.textContent = title;
+    el.contentsBtn.title = `${t.contents} — ${title}`;
+    el.contentsBtn.setAttribute('aria-label', `${t.contents}: ${title}`);
+    el.contentsTitle.textContent = t.contents;
+    el.contentsClose.setAttribute('aria-label', t.close);
+    el.contentsClose.title = t.close;
+    el.pageJumpLabel.textContent = t.goToPage;
+    el.pageInput.max = String(TOTAL);
+    el.pageTotal.textContent = `${t.of} ${TOTAL}`;
+    el.pageGo.textContent = t.go;
+  }
+
+  // The list: chapters, each with its sections folded away under a toggle,
+  // built for the reader's language when the panel opens.
+  function buildContents() {
+    const t = LABELS[state.lang];
+    const current = entryFor(state.page);
+    const chapterOf = (entry) => {
+      let chapter = null;
+      for (const e of CONTENTS) {
+        if (e.i > entry.i) break;
+        if (e.level === 1) chapter = e;
+      }
+      return chapter;
+    };
+    const openChapter = current && chapterOf(current);
+    el.contentsList.replaceChildren();
+    let group = null;
+    for (const entry of CONTENTS) {
+      const li = document.createElement('li');
+      li.className = `contents-entry level-${entry.level}`;
+      const row = document.createElement('div');
+      row.className = 'contents-row';
+      const link = document.createElement('a');
+      link.href = `#${state.lang}/${entry.page}`;
+      link.className = 'contents-link';
+      const title = document.createElement('span');
+      title.textContent = entry[state.lang];
+      const page = document.createElement('span');
+      page.className = 'contents-page';
+      page.textContent = entry.page;
+      link.append(title, page);
+      if (current && entry.i === current.i) link.setAttribute('aria-current', 'location');
+      row.append(link);
+      li.append(row);
+      if (entry.level === 1) {
+        group = document.createElement('ol');
+        group.className = 'contents-sections';
+        li.append(group);
+        el.contentsList.append(li);
+        group.hidden = entry !== openChapter;
+        li.dataset.chapter = String(entry.i);
+      } else if (group) {
+        group.append(li);
+      } else {
+        el.contentsList.append(li);
+      }
+    }
+    // A toggle for each chapter that has sections.
+    for (const li of el.contentsList.querySelectorAll(':scope > li[data-chapter]')) {
+      const sections = li.querySelector('.contents-sections');
+      if (!sections.children.length) continue;
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'contents-toggle';
+      toggle.setAttribute('aria-label', t.expand);
+      toggle.setAttribute('aria-expanded', String(!sections.hidden));
+      toggle.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+      toggle.addEventListener('click', () => {
+        sections.hidden = !sections.hidden;
+        toggle.setAttribute('aria-expanded', String(!sections.hidden));
+      });
+      li.querySelector('.contents-row').prepend(toggle);
+    }
+  }
+
+  function openContents() {
+    buildContents();
+    el.pageInput.value = String(state.page);
+    el.contents.showModal();
+    const current = el.contentsList.querySelector('[aria-current]');
+    if (current) current.scrollIntoView({ block: 'center' });
+  }
+
+  el.contentsBtn.addEventListener('click', openContents);
+  el.contentsClose.addEventListener('click', () => el.contents.close());
+  // A tap on the dimmed page around the panel closes it.
+  el.contents.addEventListener('click', (e) => {
+    if (e.target === el.contents) el.contents.close();
+  });
+  el.contentsList.addEventListener('click', (e) => {
+    const link = e.target.closest('a.contents-link');
+    if (!link) return;
+    e.preventDefault();
+    el.contents.close();
+    goTo(link.getAttribute('href').split('/')[1]);
+  });
+  el.pageJump.addEventListener('submit', (e) => {
+    e.preventDefault();
+    el.contents.close();
+    goTo(el.pageInput.value);
+  });
+  if (!CONTENTS.length) el.contentsList.hidden = true;
+
   // ---- Setup ----
 
-  const frag = document.createDocumentFragment();
-  for (let i = 1; i <= TOTAL; i++) {
-    const opt = document.createElement('option');
-    opt.value = String(i);
-    frag.append(opt);
-  }
-  el.select.append(frag);
-
-  el.select.addEventListener('change', () => goTo(el.select.value));
   el.prev.addEventListener('click', () => goTo(state.page - 1));
   el.next.addEventListener('click', () => goTo(state.page + 1));
   el.lang.addEventListener('click', () => setLang(state.lang === 'ar' ? 'en' : 'ar'));
-  Maqasid.bindThemeToggle(el.theme);
+  Site.bindThemeToggle(el.theme);
   el.fontDown.addEventListener('click', () => changeFont(-FONT.step));
   el.fontUp.addEventListener('click', () => changeFont(FONT.step));
   applyFontScale();
@@ -405,7 +542,7 @@
 
   // Arrow keys follow reading direction: in Arabic, left is forward.
   document.addEventListener('keydown', (e) => {
-    if (e.altKey || e.ctrlKey || e.metaKey || e.target === el.select) return;
+    if (e.altKey || e.ctrlKey || e.metaKey || el.contents.open) return;
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     const forwardKey = state.lang === 'ar' ? 'ArrowLeft' : 'ArrowRight';
     goTo(state.page + (e.key === forwardKey ? 1 : -1));

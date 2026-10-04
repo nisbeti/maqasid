@@ -1,0 +1,1622 @@
+[
+ {
+  "level": 1,
+  "page": 1,
+  "ar": "المقدمة",
+  "en": "Introduction"
+ },
+ {
+  "level": 1,
+  "page": 8,
+  "ar": "الشاطبي وعصره",
+  "en": "Al-Shatibi and His Era"
+ },
+ {
+  "level": 1,
+  "page": 8,
+  "ar": "تعريف بالشاطبي وعصره",
+  "en": "Introduction to Al-Shatibi and His Era"
+ },
+ {
+  "level": 1,
+  "page": 8,
+  "ar": "التعريف بالشاطبي",
+  "en": "Introduction to Al-Shatibi"
+ },
+ {
+  "level": 1,
+  "page": 10,
+  "ar": "عصره",
+  "en": "His Era"
+ },
+ {
+  "level": 1,
+  "page": 15,
+  "ar": "الحالة السياسية",
+  "en": "The Political Situation"
+ },
+ {
+  "level": 1,
+  "page": 18,
+  "ar": "الحالة الاقتصادية",
+  "en": "The Economic Situation"
+ },
+ {
+  "level": 1,
+  "page": 20,
+  "ar": "الحالة العلمية",
+  "en": "The Scientific Situation"
+ },
+ {
+  "level": 1,
+  "page": 23,
+  "ar": "مناخ المجتمع الثقافي",
+  "en": "The Cultural Climate of Society"
+ },
+ {
+  "level": 1,
+  "page": 30,
+  "ar": "شيوخ الشاطبي",
+  "en": "Al-Shatibi's Teachers"
+ },
+ {
+  "level": 1,
+  "page": 32,
+  "ar": "تلاميذه",
+  "en": "His Students"
+ },
+ {
+  "level": 1,
+  "page": 33,
+  "ar": "مكانته العلمية",
+  "en": "His Scholarly Standing"
+ },
+ {
+  "level": 1,
+  "page": 35,
+  "ar": "مؤلفاته",
+  "en": "His Works"
+ },
+ {
+  "level": 1,
+  "page": 41,
+  "ar": "الفصل الأول: التمهيد لنشوء فكرة مقاصد الشريعة",
+  "en": "Chapter One: Introduction to the Emergence of the Idea of the Objectives of the Sharia"
+ },
+ {
+  "level": 2,
+  "page": 41,
+  "ar": "مقدمة في نشأة علم أصول الفقه وتطوره",
+  "en": "Introduction to the Emergence and Development of the Science of Usul al-Fiqh"
+ },
+ {
+  "level": 2,
+  "page": 41,
+  "ar": "المبحث الأول: القياس",
+  "en": "Section One: Qiyas"
+ },
+ {
+  "level": 3,
+  "page": 41,
+  "ar": "مفهوم القياس ومباحثه",
+  "en": "The Concept of Qiyas and Its Discussions"
+ },
+ {
+  "level": 3,
+  "page": 52,
+  "ar": "حجيته",
+  "en": "Its Authority"
+ },
+ {
+  "level": 3,
+  "page": 54,
+  "ar": "أركان القياس",
+  "en": "The Pillars of Qiyas"
+ },
+ {
+  "level": 3,
+  "page": 54,
+  "ar": "شروطه",
+  "en": "Its Conditions"
+ },
+ {
+  "level": 3,
+  "page": 55,
+  "ar": "العلة",
+  "en": "The Illa"
+ },
+ {
+  "level": 3,
+  "page": 61,
+  "ar": "السبب",
+  "en": "The Cause"
+ },
+ {
+  "level": 3,
+  "page": 63,
+  "ar": "المناط",
+  "en": "The Manat"
+ },
+ {
+  "level": 3,
+  "page": 65,
+  "ar": "تحقيق المناط",
+  "en": "Establishing the Manat"
+ },
+ {
+  "level": 3,
+  "page": 66,
+  "ar": "تنقيح المناط",
+  "en": "Refining the Manat"
+ },
+ {
+  "level": 3,
+  "page": 67,
+  "ar": "تخريج المناط",
+  "en": "Deriving the Manat"
+ },
+ {
+  "level": 2,
+  "page": 67,
+  "ar": "المبحث الثاني: مسالك العلة وشروطها",
+  "en": "Section Two: The Paths of the Illa and Its Conditions"
+ },
+ {
+  "level": 3,
+  "page": 67,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 3,
+  "page": 69,
+  "ar": "مسالك العلة",
+  "en": "The Paths of the Illa"
+ },
+ {
+  "level": 3,
+  "page": 79,
+  "ar": "في شروط العلة",
+  "en": "On the Conditions of the Illa"
+ },
+ {
+  "level": 2,
+  "page": 87,
+  "ar": "المبحث الثالث: مسلك الإخالة والمناسبة",
+  "en": "Section Three: The Path of Ikhalah and Munasaba"
+ },
+ {
+  "level": 3,
+  "page": 87,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 3,
+  "page": 88,
+  "ar": "تحقيق معنى الإخالة والمناسبة",
+  "en": "Clarifying the Meaning of Ikhalah and Munasaba"
+ },
+ {
+  "level": 3,
+  "page": 93,
+  "ar": "أقسام المناسب",
+  "en": "Categories of Munasaba"
+ },
+ {
+  "level": 3,
+  "page": 93,
+  "ar": "المعتبر",
+  "en": "The Considered"
+ },
+ {
+  "level": 3,
+  "page": 94,
+  "ar": "أنواع الاعتبار",
+  "en": "Types of Consideration"
+ },
+ {
+  "level": 3,
+  "page": 96,
+  "ar": "أقسام المعتبر",
+  "en": "Categories of the Considered"
+ },
+ {
+  "level": 3,
+  "page": 97,
+  "ar": "المؤثر",
+  "en": "The Influential"
+ },
+ {
+  "level": 3,
+  "page": 99,
+  "ar": "الملائم",
+  "en": "The Suitable"
+ },
+ {
+  "level": 3,
+  "page": 102,
+  "ar": "الغريب",
+  "en": "The Strange"
+ },
+ {
+  "level": 3,
+  "page": 104,
+  "ar": "الملغى",
+  "en": "The Abrogated"
+ },
+ {
+  "level": 3,
+  "page": 105,
+  "ar": "المرسل",
+  "en": "The Sent"
+ },
+ {
+  "level": 3,
+  "page": 115,
+  "ar": "شروط الوصف المناسب",
+  "en": "Conditions of the Suitable Description"
+ },
+ {
+  "level": 1,
+  "page": 116,
+  "ar": "الفصل الثاني: نشأة فكرة مقاصد الشريعة",
+  "en": "Chapter Two: The Emergence of the Idea of the Objectives of the Sharia"
+ },
+ {
+  "level": 2,
+  "page": 117,
+  "ar": "عرض موجز لنشأة الفكرة",
+  "en": "A Brief Overview of the Emergence of the Idea"
+ },
+ {
+  "level": 2,
+  "page": 119,
+  "ar": "المبحث الأول: المحاججات التي أدت إلى فكرة المقاصد",
+  "en": "Section One: The Arguments That Led to the Idea of the Objectives"
+ },
+ {
+  "level": 3,
+  "page": 119,
+  "ar": "تطور الجدل من مسلك المناسبة إلى الاستدلال",
+  "en": "The Evolution of the Debate from the Path of Munasaba to Istidlal"
+ },
+ {
+  "level": 3,
+  "page": 122,
+  "ar": "معنى الاستدلال",
+  "en": "The Meaning of Istidlal"
+ },
+ {
+  "level": 3,
+  "page": 126,
+  "ar": "أدلة القائلين بالمناسبة وبالاستدلال",
+  "en": "Evidence from Those Who Advocate Munasaba and Istidlal"
+ },
+ {
+  "level": 3,
+  "page": 129,
+  "ar": "ردود مبطلي مسلك المناسبة والاستدلال",
+  "en": "Responses from Those Who Refute the Path of Munasaba and Istidlal"
+ },
+ {
+  "level": 2,
+  "page": 132,
+  "ar": "المبحث الثاني: انبثاق فكرة مقاصد الشريعة",
+  "en": "Section Two: The Emergence of the Idea of the Objectives of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 132,
+  "ar": "احتدام الجدل",
+  "en": "The Intensity of the Debate"
+ },
+ {
+  "level": 3,
+  "page": 137,
+  "ar": "تقسيم الأحكام بحسب مآلاتها أو مقاصدها المصلحية",
+  "en": "Classifying the Rulings According to Their Outcomes or Their Maslahi Objectives"
+ },
+ {
+  "level": 2,
+  "page": 145,
+  "ar": "المبحث الثالث: المدخل إلى فكرة المقاصد عند الشاطبي",
+  "en": "Section Three: The Introduction to the Idea of the Objectives According to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 145,
+  "ar": "عرض موجز لهذا المبحث",
+  "en": "A Brief Overview of This Section"
+ },
+ {
+  "level": 3,
+  "page": 147,
+  "ar": "أدلة القائلين بأصل التعليل",
+  "en": "Evidence from Those Who Advocate the Principle of Ta'leel"
+ },
+ {
+  "level": 3,
+  "page": 150,
+  "ar": "أدلة الرادين",
+  "en": "Evidence from the Refuters"
+ },
+ {
+  "level": 3,
+  "page": 154,
+  "ar": "هل يُلزم أصل التعليل بمسلك المناسبة",
+  "en": "Is the Principle of Ta'leel Obligated by the Path of Munasaba"
+ },
+ {
+  "level": 3,
+  "page": 156,
+  "ar": "موقف الشاطبي بإيجاز",
+  "en": "The Position of al-Shatibi in Brief"
+ },
+ {
+  "level": 3,
+  "page": 158,
+  "ar": "معنى المقاصد عند الشاطبي",
+  "en": "The meaning of the objectives (maqasid) according to al-Shatibi"
+ },
+ {
+  "level": 1,
+  "page": 165,
+  "ar": "الفصل الثالث: ضوابط المقاصد عند الشاطبي",
+  "en": "Chapter Three: The criteria of the objectives according to al-Shatibi"
+ },
+ {
+  "level": 2,
+  "page": 165,
+  "ar": "موضوع هذا الفصل",
+  "en": "The subject of this chapter"
+ },
+ {
+  "level": 2,
+  "page": 166,
+  "ar": "المبحث الأول: في المقدمات",
+  "en": "Section One: On the introductions"
+ },
+ {
+  "level": 3,
+  "page": 166,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this section"
+ },
+ {
+  "level": 3,
+  "page": 166,
+  "ar": "أصول الفقه قطعية",
+  "en": "The principles of jurisprudence (usul al-fiqh) are definitive"
+ },
+ {
+  "level": 3,
+  "page": 167,
+  "ar": "الاستقراء فقط هو طريق القطع",
+  "en": "Induction is the only path to certainty"
+ },
+ {
+  "level": 3,
+  "page": 174,
+  "ar": "المقاصد الأُول والمقاصد التابعة",
+  "en": "Primary objectives and secondary objectives"
+ },
+ {
+  "level": 3,
+  "page": 176,
+  "ar": "خواص الكليات",
+  "en": "Characteristics of the universals"
+ },
+ {
+  "level": 3,
+  "page": 180,
+  "ar": "معنى الرجوع إلى أصل قطعي",
+  "en": "The meaning of returning to a definitive origin"
+ },
+ {
+  "level": 3,
+  "page": 185,
+  "ar": "الجزئي والفرع والفرق بينهما",
+  "en": "The particular and the branch and the difference between them"
+ },
+ {
+  "level": 2,
+  "page": 187,
+  "ar": "المبحث الثاني: في المستندات",
+  "en": "Section Two: On the sources"
+ },
+ {
+  "level": 3,
+  "page": 187,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 3,
+  "page": 189,
+  "ar": "المباح",
+  "en": "Permissibility (mubah)"
+ },
+ {
+  "level": 3,
+  "page": 191,
+  "ar": "تصوير الجزئية والكلية في الأحكام",
+  "en": "The depiction of the particular and the universal in rulings"
+ },
+ {
+  "level": 3,
+  "page": 193,
+  "ar": "المباح قسمان",
+  "en": "Permissibility is of two types"
+ },
+ {
+  "level": 3,
+  "page": 200,
+  "ar": "مرتبة العفو",
+  "en": "The rank of pardon"
+ },
+ {
+  "level": 3,
+  "page": 201,
+  "ar": "الرخصة والعزيمة",
+  "en": "License (rukhsah) and obligation (azimah)"
+ },
+ {
+  "level": 3,
+  "page": 207,
+  "ar": "الأسباب والمسببات",
+  "en": "Causes and their effects"
+ },
+ {
+  "level": 2,
+  "page": 209,
+  "ar": "المبحث الثالث: في النتائج ومفهوم المصلحة والمفسدة عند الشاطبي",
+  "en": "Section Three: On the results and the concept of public interest (maslaha) and harm (mafsadah) according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 209,
+  "ar": "تعريف بموضوع البحث",
+  "en": "An introduction to the subject of the research"
+ },
+ {
+  "level": 3,
+  "page": 210,
+  "ar": "السبب",
+  "en": "The cause"
+ },
+ {
+  "level": 3,
+  "page": 210,
+  "ar": "الحكمة",
+  "en": "The wisdom"
+ },
+ {
+  "level": 3,
+  "page": 212,
+  "ar": "المسبّب",
+  "en": "The effect"
+ },
+ {
+  "level": 3,
+  "page": 212,
+  "ar": "العلة",
+  "en": "The reason"
+ },
+ {
+  "level": 3,
+  "page": 213,
+  "ar": "معاني الأحكام",
+  "en": "Meanings of the rulings"
+ },
+ {
+  "level": 3,
+  "page": 214,
+  "ar": "المصلحة والمفسدة",
+  "en": "Public interest and harm"
+ },
+ {
+  "level": 3,
+  "page": 215,
+  "ar": "مفهوم الشاطبي لكل من المصلحة والمفسدة",
+  "en": "Al-Shatibi's concept of both public interest and harm"
+ },
+ {
+  "level": 3,
+  "page": 216,
+  "ar": "مناقشة تحليلية لاستدلالات الشاطبي",
+  "en": "An analytical discussion of al-Shatibi's arguments"
+ },
+ {
+  "level": 3,
+  "page": 226,
+  "ar": "بعض النصوص في مراد الشاطبي بالمصلحة والمفسدة",
+  "en": "Some texts regarding al-Shatibi's intent with public interest and harm"
+ },
+ {
+  "level": 1,
+  "page": 229,
+  "ar": "الفصل الرابع: قصد الشارع في وضع الشريعة ابتداءً وفي وضعها للإفهام",
+  "en": "Chapter Four: The intention of the Legislator in establishing the Sharia (Islamic law) from the outset and in its understanding"
+ },
+ {
+  "level": 2,
+  "page": 229,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 2,
+  "page": 232,
+  "ar": "المبحث الأول: قصد الشارع في وضع الشريعة ابتداءً",
+  "en": "Section One: The intention of the Legislator in establishing the Sharia from the outset"
+ },
+ {
+  "level": 3,
+  "page": 232,
+  "ar": "معنى هذا النوع",
+  "en": "The meaning of this type"
+ },
+ {
+  "level": 3,
+  "page": 232,
+  "ar": "المقاصد ثلاثة أقسام",
+  "en": "The objectives are of three categories"
+ },
+ {
+  "level": 3,
+  "page": 232,
+  "ar": "التعريف بهذه الأقسام الثلاثة",
+  "en": "An introduction to these three categories"
+ },
+ {
+  "level": 3,
+  "page": 234,
+  "ar": "جريان هذه المقاصد في كل تكاليف الشريعة",
+  "en": "The application of these objectives in all obligations of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 236,
+  "ar": "مكملات أو تتمات المقاصد",
+  "en": "Complements or supplements to the objectives"
+ },
+ {
+  "level": 3,
+  "page": 237,
+  "ar": "تفاوت مراتب المقاصد",
+  "en": "The varying ranks of the objectives"
+ },
+ {
+  "level": 2,
+  "page": 246,
+  "ar": "المبحث الثاني: عصمة الشريعة",
+  "en": "Section Two: The infallibility of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 246,
+  "ar": "معنى هذا التعبير",
+  "en": "The meaning of this expression"
+ },
+ {
+  "level": 3,
+  "page": 249,
+  "ar": "لا يجوز مخالفة الأحكام بحجة المقاصد",
+  "en": "It is not permissible to violate the rulings under the pretext of the objectives"
+ },
+ {
+  "level": 3,
+  "page": 251,
+  "ar": "تفسير لبعض نصوص الشاطبي",
+  "en": "Interpretation of some texts of al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 262,
+  "ar": "مناقشة الشاطبي لبعض الأقوال في المصالح والمفاسد",
+  "en": "Al-Shatibi's discussion of some opinions on public interests and harms"
+ },
+ {
+  "level": 2,
+  "page": 269,
+  "ar": "المبحث الثالث: قصد الشارع في وضع الشريعة للإفهام",
+  "en": "Section Three: The intention of the Legislator in establishing the Sharia for understanding"
+ },
+ {
+  "level": 3,
+  "page": 269,
+  "ar": "معنى هذا النوع",
+  "en": "The meaning of this type"
+ },
+ {
+  "level": 3,
+  "page": 269,
+  "ar": "الشريعة عربية اللسان والأسلوب",
+  "en": "The Sharia is in the Arabic language and style"
+ },
+ {
+  "level": 3,
+  "page": 271,
+  "ar": "أمية الشريعة",
+  "en": "The ignorance of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 274,
+  "ar": "المعاني هي المقصود الأعظم للنصوص",
+  "en": "The meanings are the ultimate objective of the texts"
+ },
+ {
+  "level": 3,
+  "page": 276,
+  "ar": "المعاني الأصلية والمعاني التابعة",
+  "en": "The original meanings and the subsidiary meanings"
+ },
+ {
+  "level": 3,
+  "page": 281,
+  "ar": "لا حكم للدلالة التابعة",
+  "en": "There is no ruling for the subsidiary indication"
+ },
+ {
+  "level": 1,
+  "page": 284,
+  "ar": "الفصل الخامس: قصد الشارع في وضع الشريعة للتكليف بمقتضاها وفي دخول المكلف تحت أحكامها",
+  "en": "Chapter Five: The intention of the Legislator in establishing the Sharia for obligation By its requirements and the entry of the obligated under its rulings"
+ },
+ {
+  "level": 2,
+  "page": 284,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 2,
+  "page": 284,
+  "ar": "المبحث الأول: قصد التكليف بمقتضى الشريعة",
+  "en": "Section One: The intention of obligation according to the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 284,
+  "ar": "معنى هذا النوع",
+  "en": "The meaning of this type"
+ },
+ {
+  "level": 3,
+  "page": 286,
+  "ar": "التكليف والوسع",
+  "en": "Obligation and ease"
+ },
+ {
+  "level": 3,
+  "page": 287,
+  "ar": "التكليف والمشقة",
+  "en": "Obligation and hardship"
+ },
+ {
+  "level": 3,
+  "page": 288,
+  "ar": "أصل عدم التكليف بالمشقات المعنتة",
+  "en": "The original principle of not imposing obligations with excessive hardship"
+ },
+ {
+  "level": 3,
+  "page": 290,
+  "ar": "المشقات مفاسد",
+  "en": "Hardships are evils"
+ },
+ {
+  "level": 3,
+  "page": 291,
+  "ar": "المشقة المعتادة لا تسمى مشقة",
+  "en": "Usual hardship is not called hardship"
+ },
+ {
+  "level": 3,
+  "page": 293,
+  "ar": "المشقات المعتبرة أو المقصود رفعها",
+  "en": "Considered hardships or those intended to be alleviated"
+ },
+ {
+  "level": 3,
+  "page": 294,
+  "ar": "معنى الرخصة",
+  "en": "The meaning of concession"
+ },
+ {
+  "level": 3,
+  "page": 296,
+  "ar": "أسباب الرخص",
+  "en": "Reasons for concessions"
+ },
+ {
+  "level": 3,
+  "page": 299,
+  "ar": "شروط الترخص",
+  "en": "Conditions for concessions"
+ },
+ {
+  "level": 3,
+  "page": 302,
+  "ar": "وسطية الشريعة",
+  "en": "The moderation of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 305,
+  "ar": "اختلاف مقدار المشقة المعتادة باختلاف الأعمال",
+  "en": "The varying degree of usual hardship according to different actions"
+ },
+ {
+  "level": 2,
+  "page": 307,
+  "ar": "المبحث الثاني: قصد الشارع في دخول المكلف تحت أحكام الشريعة",
+  "en": "Section Two: The intention of the Legislator in the entry of the obligated under the rulings of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 307,
+  "ar": "تمهيد لهذا النوع",
+  "en": "Introduction to this type"
+ },
+ {
+  "level": 3,
+  "page": 310,
+  "ar": "أصل الامتثال أو التعبد",
+  "en": "The original of compliance or worship"
+ },
+ {
+  "level": 3,
+  "page": 314,
+  "ar": "المصالح والمفاسد تعرف بالشرع فقط",
+  "en": "Benefits and harms are known only by the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 317,
+  "ar": "التعارض بين التعليل بالمصالح وحاكمية الشرع",
+  "en": "The conflict between reasoning with benefits and the supremacy of the Sharia"
+ },
+ {
+  "level": 3,
+  "page": 322,
+  "ar": "المقاصد الشرعية ضربان: أصلية وتابعية",
+  "en": "The legal objectives are of two types: original and subsidiary"
+ },
+ {
+  "level": 2,
+  "page": 329,
+  "ar": "المبحث الثالث: بين الشريعة ومقاصدها أو بين التعبد واتباع المعاني",
+  "en": "Section Three: Between the Sharia and its objectives or between worship and following the meanings"
+ },
+ {
+  "level": 3,
+  "page": 329,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this section"
+ },
+ {
+  "level": 3,
+  "page": 329,
+  "ar": "عموم الشريعة وثباتها",
+  "en": "The universality of the Sharia and its stability"
+ },
+ {
+  "level": 3,
+  "page": 333,
+  "ar": "العرف ومدى اعتباره عند الشاطبي",
+  "en": "Custom and its consideration according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 337,
+  "ar": "التكليف بالأحكام ليس تكليفاً بمقاصدها",
+  "en": "Obligation by rulings is not an obligation by its objectives"
+ },
+ {
+  "level": 3,
+  "page": 344,
+  "ar": "التلازم الشرعي بين السبب ومسببَّه",
+  "en": "The legal correlation between the cause and its effect"
+ },
+ {
+  "level": 3,
+  "page": 347,
+  "ar": "العادات والعبادات بين اتباع المعاني والتعبد",
+  "en": "Customs and acts of worship between following the meanings and worship"
+ },
+ {
+  "level": 3,
+  "page": 348,
+  "ar": "معنى اتباع المعاني",
+  "en": "The meaning of following the meanings"
+ },
+ {
+  "level": 3,
+  "page": 348,
+  "ar": "العبادات لا تعلل",
+  "en": "Acts of worship are not subject to reasoning"
+ },
+ {
+  "level": 3,
+  "page": 351,
+  "ar": "الأصل في العادات التعليل",
+  "en": "The original principle in customary practices is reasoning"
+ },
+ {
+  "level": 3,
+  "page": 355,
+  "ar": "لا بد من اعتبار التعبد في العادات",
+  "en": "It is necessary to consider devotion in customary practices"
+ },
+ {
+  "level": 1,
+  "page": 356,
+  "ar": "الفصل السادس: مقاصد المكلف",
+  "en": "Chapter Six: Objectives of the Obligated"
+ },
+ {
+  "level": 2,
+  "page": 356,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 2,
+  "page": 358,
+  "ar": "المبحث الأول: المقاصد والنوايا",
+  "en": "Section One: Objectives and Intentions"
+ },
+ {
+  "level": 3,
+  "page": 358,
+  "ar": "النية والقصد والفرق بينهما",
+  "en": "Intention and purpose and the difference between them"
+ },
+ {
+  "level": 3,
+  "page": 362,
+  "ar": "أثر النية في الأعمال",
+  "en": "The effect of intention on actions"
+ },
+ {
+  "level": 3,
+  "page": 366,
+  "ar": "قاعدة: الأمور بمقاصدها",
+  "en": "Principle: Matters are judged by their intentions"
+ },
+ {
+  "level": 3,
+  "page": 369,
+  "ar": "الإخلاص والتشريك في المقاصد",
+  "en": "Sincerity and associating partners in objectives"
+ },
+ {
+  "level": 2,
+  "page": 377,
+  "ar": "المبحث الثاني: أعمال المكلف ومقاصده",
+  "en": "Section Two: The Actions of the Obligated and Their Objectives"
+ },
+ {
+  "level": 3,
+  "page": 377,
+  "ar": "أثر مقاصد المكلف في الأعمال عند الشاطبي",
+  "en": "The effect of the objectives of the obligated on actions according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 384,
+  "ar": "الموافقة والمخالفة لقصد الشارع",
+  "en": "Agreement and disagreement with the intent of the Legislator"
+ },
+ {
+  "level": 2,
+  "page": 393,
+  "ar": "المبحث الثالث: الحِيَل",
+  "en": "Section Three: Legal Devices"
+ },
+ {
+  "level": 3,
+  "page": 393,
+  "ar": "تعريفها",
+  "en": "Definition"
+ },
+ {
+  "level": 3,
+  "page": 396,
+  "ar": "حكم الشرع في الحيل عند الشاطبي",
+  "en": "The ruling of Sharia on legal devices according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 403,
+  "ar": "الحكم فيما ينبني على الحيل",
+  "en": "The ruling on what is based on legal devices"
+ },
+ {
+  "level": 3,
+  "page": 405,
+  "ar": "حق الله وحق العبد",
+  "en": "The right of Allah and the right of the servant"
+ },
+ {
+  "level": 3,
+  "page": 408,
+  "ar": "أثر النية فيما كان حقاً لله أو حقاً للعبد",
+  "en": "The effect of intention in what is the right of Allah or the right of the servant"
+ },
+ {
+  "level": 1,
+  "page": 409,
+  "ar": "الفصل السابع: منهج الشاطبي في فهم الشريعة",
+  "en": "Chapter Seven: Al-Shatibi's Methodology in Understanding Sharia"
+ },
+ {
+  "level": 2,
+  "page": 409,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 2,
+  "page": 410,
+  "ar": "المبحث الأول: منهج الشاطبي في فهم الشريعة",
+  "en": "Section One: Al-Shatibi's Methodology in Understanding Sharia"
+ },
+ {
+  "level": 3,
+  "page": 410,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this section"
+ },
+ {
+  "level": 3,
+  "page": 411,
+  "ar": "نظرة الشاطبي إلى دلالات النصوص الشرعية",
+  "en": "Al-Shatibi's view on the indications of legal texts"
+ },
+ {
+  "level": 3,
+  "page": 415,
+  "ar": "يجب إعمال الجزئيات والكليات معاً",
+  "en": "It is necessary to consider both particulars and universals together"
+ },
+ {
+  "level": 3,
+  "page": 418,
+  "ar": "الكلي لا ينخرم بمعارضة آحاد الجزئيات",
+  "en": "The universal is not invalidated by the opposition of individual particulars"
+ },
+ {
+  "level": 3,
+  "page": 420,
+  "ar": "الإحكام والتشابه",
+  "en": "Precision and similarity"
+ },
+ {
+  "level": 3,
+  "page": 423,
+  "ar": "تأويل المتشابه",
+  "en": "Interpretation of the ambiguous"
+ },
+ {
+  "level": 3,
+  "page": 425,
+  "ar": "النسخ",
+  "en": "Abrogation"
+ },
+ {
+  "level": 3,
+  "page": 426,
+  "ar": "الأوامر والنواهي",
+  "en": "Commands and prohibitions"
+ },
+ {
+  "level": 3,
+  "page": 432,
+  "ar": "العموم والخصوص",
+  "en": "General and specific"
+ },
+ {
+  "level": 3,
+  "page": 442,
+  "ar": "البيان والإجمال",
+  "en": "Clarification and ambiguity"
+ },
+ {
+  "level": 2,
+  "page": 444,
+  "ar": "المبحث الثاني: منهج الشاطبي في فهم القرآن",
+  "en": "Section Two: Al-Shatibi's Methodology in Understanding the Qur'an"
+ },
+ {
+  "level": 3,
+  "page": 444,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this section"
+ },
+ {
+  "level": 3,
+  "page": 445,
+  "ar": "القرآن فيه بيان كل شيء من الشريعة",
+  "en": "The Qur'an contains clarification of everything in Sharia"
+ },
+ {
+  "level": 3,
+  "page": 447,
+  "ar": "الحاجة إلى تفسير القرآن بالرأي",
+  "en": "The need to interpret the Qur'an based on opinion"
+ },
+ {
+  "level": 3,
+  "page": 450,
+  "ar": "للقرآن ظاهر وباطن",
+  "en": "The Qur'an has an apparent and a hidden meaning"
+ },
+ {
+  "level": 3,
+  "page": 454,
+  "ar": "كيفية فهم الظاهر",
+  "en": "How to understand the apparent meaning"
+ },
+ {
+  "level": 3,
+  "page": 456,
+  "ar": "كيفية فهم الباطن",
+  "en": "How to understand the hidden meaning"
+ },
+ {
+  "level": 3,
+  "page": 458,
+  "ar": "إشكالات عل منهج الشاطبي في فهم معاني القرآن",
+  "en": "Issues related to al-Shatibi's methodology in understanding the meanings of the Qur'an"
+ },
+ {
+  "level": 3,
+  "page": 464,
+  "ar": "أمثلة على منهج الشاطبي في فهم معاني القرآن",
+  "en": "Examples of al-Shatibi's methodology in understanding the meanings of the Qur'an"
+ },
+ {
+  "level": 3,
+  "page": 469,
+  "ar": "منهج الشاطبي في استقراء المعاني في القرآن",
+  "en": "The methodology of al-Shatibi in deducing meanings in the Qur'an"
+ },
+ {
+  "level": 2,
+  "page": 473,
+  "ar": "المبحث الثالث: منهج الشاطبي في فهم السنة",
+  "en": "Section Three: The methodology of al-Shatibi in understanding the Sunnah"
+ },
+ {
+  "level": 3,
+  "page": 473,
+  "ar": "موضوع هذا البحث",
+  "en": "The subject of this research"
+ },
+ {
+  "level": 3,
+  "page": 473,
+  "ar": "تعريف السنة عند الشاطبي",
+  "en": "Definition of the Sunnah according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 475,
+  "ar": "السنة بيان للكتاب",
+  "en": "The Sunnah is an explanation of the Book"
+ },
+ {
+  "level": 3,
+  "page": 479,
+  "ar": "السنة فيها بيان كل شيء من الأحكام الشرعية",
+  "en": "The Sunnah contains an explanation of everything from the legal rulings"
+ },
+ {
+  "level": 3,
+  "page": 480,
+  "ar": "كيفية بيان السنة للقرآن",
+  "en": "How the Sunnah explains the Qur'an"
+ },
+ {
+  "level": 3,
+  "page": 486,
+  "ar": "ردود على اعتراضات",
+  "en": "Responses to objections"
+ },
+ {
+  "level": 3,
+  "page": 491,
+  "ar": "البيان بالقول والفعل والإقرار",
+  "en": "Explanation by word, action, and approval"
+ },
+ {
+  "level": 3,
+  "page": 494,
+  "ar": "الإجماع",
+  "en": "Consensus"
+ },
+ {
+  "level": 3,
+  "page": 494,
+  "ar": "القياس",
+  "en": "Analogy"
+ },
+ {
+  "level": 1,
+  "page": 495,
+  "ar": "الفصل الثامن: الاجتهاد والتقليد",
+  "en": "Chapter Eight: Ijtihad and taqlid"
+ },
+ {
+  "level": 2,
+  "page": 495,
+  "ar": "تمهيد",
+  "en": "Introduction"
+ },
+ {
+  "level": 2,
+  "page": 497,
+  "ar": "المبحث الأول: ضوابط الاجتهاد",
+  "en": "Section One: Controls of ijtihad"
+ },
+ {
+  "level": 3,
+  "page": 497,
+  "ar": "تعريفه عند الشاطبي",
+  "en": "Definition according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 497,
+  "ar": "شروطه",
+  "en": "Conditions"
+ },
+ {
+  "level": 3,
+  "page": 501,
+  "ar": "أنواع الاجتهاد ومراتبه",
+  "en": "Types and ranks of ijtihad"
+ },
+ {
+  "level": 3,
+  "page": 504,
+  "ar": "الاجتهاد المعتبر شرعاً",
+  "en": "Legally recognized ijtihad"
+ },
+ {
+  "level": 3,
+  "page": 508,
+  "ar": "اختلاف المجتهدين",
+  "en": "Differences among the mujtahids"
+ },
+ {
+  "level": 3,
+  "page": 509,
+  "ar": "الخطأ في الاجتهاد",
+  "en": "Error in ijtihad"
+ },
+ {
+  "level": 3,
+  "page": 514,
+  "ar": "علامة الاجتهاد المعتبر",
+  "en": "Signs of recognized ijtihad"
+ },
+ {
+  "level": 3,
+  "page": 520,
+  "ar": "لا يمكن انقطاع الاجتهاد كلياً",
+  "en": "Ijtihad cannot be completely discontinued"
+ },
+ {
+  "level": 2,
+  "page": 523,
+  "ar": "المبحث الثاني: ضوابط التقليد والفتوى",
+  "en": "Section Two: Controls of taqlid and fatwa"
+ },
+ {
+  "level": 3,
+  "page": 523,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this section"
+ },
+ {
+  "level": 3,
+  "page": 524,
+  "ar": "المجتهدون أدلة المقلدين",
+  "en": "The mujtahids' evidence for the muqallids"
+ },
+ {
+  "level": 3,
+  "page": 526,
+  "ar": "الترجيح بين المجتهدين",
+  "en": "Preference among the mujtahids"
+ },
+ {
+  "level": 3,
+  "page": 533,
+  "ar": "قواعد مردودة في الفتوى",
+  "en": "Rejected principles in fatwa"
+ },
+ {
+  "level": 2,
+  "page": 540,
+  "ar": "المبحث الثالث: أصل مآلات الأفعال",
+  "en": "Section Three: The principle of the outcomes of actions"
+ },
+ {
+  "level": 3,
+  "page": 540,
+  "ar": "أهميته في منهج الشاطبي",
+  "en": "Its importance in al-Shatibi's methodology"
+ },
+ {
+  "level": 3,
+  "page": 543,
+  "ar": "أدلته",
+  "en": "Its evidence"
+ },
+ {
+  "level": 3,
+  "page": 545,
+  "ar": "معناه وتطبيقه",
+  "en": "Its meaning and application"
+ },
+ {
+  "level": 3,
+  "page": 553,
+  "ar": "مناقشة فهم خاطئ لأصل اعتبار المآلات",
+  "en": "Discussion of a misunderstanding regarding the principle of considering outcomes"
+ },
+ {
+  "level": 3,
+  "page": 553,
+  "ar": "شرح نص في اعتبار مآلات الأفعال",
+  "en": "Explanation of a text regarding the consideration of outcomes of actions"
+ },
+ {
+  "level": 1,
+  "page": 557,
+  "ar": "الفصل التاسع: في تطبيق الفكرة: ثلاث قواعد كلية",
+  "en": "Chapter Nine: Applying the idea: Three general principles"
+ },
+ {
+  "level": 2,
+  "page": 557,
+  "ar": "موضوع هذا الفصل",
+  "en": "The subject of this chapter"
+ },
+ {
+  "level": 2,
+  "page": 558,
+  "ar": "المبحث الأول: المصالح المرسلة",
+  "en": "Section One: Al-masalih al-mursala (unrestricted public interests)"
+ },
+ {
+  "level": 3,
+  "page": 558,
+  "ar": "معنى المصالح المرسلة",
+  "en": "Meaning of al-masalih al-mursala"
+ },
+ {
+  "level": 3,
+  "page": 558,
+  "ar": "المصالح المرسلة عند الأئمة",
+  "en": "Al-masalih al-mursala according to the imams"
+ },
+ {
+  "level": 3,
+  "page": 562,
+  "ar": "المصالح المرسلة عند الشاطبي",
+  "en": "Al-masalih al-mursala according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 563,
+  "ar": "مواضع إعمال القاعدة",
+  "en": "Areas of applying the principle"
+ },
+ {
+  "level": 3,
+  "page": 568,
+  "ar": "أقسام المصالح",
+  "en": "Categories of interests"
+ },
+ {
+  "level": 3,
+  "page": 570,
+  "ar": "شروط القاعدة",
+  "en": "Conditions of the principle"
+ },
+ {
+  "level": 2,
+  "page": 574,
+  "ar": "المبحث الثاني: الاستحسان",
+  "en": "Section Two: Istihsan (juridical preference)"
+ },
+ {
+  "level": 3,
+  "page": 574,
+  "ar": "الاستحسان ومواقف الأئمة منه",
+  "en": "Istihsan and the positions of the imams on it"
+ },
+ {
+  "level": 3,
+  "page": 577,
+  "ar": "ما هو الاستحسان",
+  "en": "What is istihsan"
+ },
+ {
+  "level": 3,
+  "page": 578,
+  "ar": "أقسام الاستحسان",
+  "en": "Sections of Istihsan"
+ },
+ {
+  "level": 3,
+  "page": 583,
+  "ar": "الاستحسان عند الشاطبي",
+  "en": "Istihsan according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 586,
+  "ar": "الفرق بين المصالح المرسلة والاستحسان",
+  "en": "The difference between masalih mursala (public interests) and istihsan"
+ },
+ {
+  "level": 2,
+  "page": 587,
+  "ar": "المبحث الثالث: سد الذرائع",
+  "en": "Section Three: Closing the Means"
+ },
+ {
+  "level": 3,
+  "page": 587,
+  "ar": "تعريفه",
+  "en": "Definition"
+ },
+ {
+  "level": 3,
+  "page": 588,
+  "ar": "موقف المذاهب من سد الذرائع",
+  "en": "The position of the schools of thought on closing the means"
+ },
+ {
+  "level": 3,
+  "page": 590,
+  "ar": "أدلة القاعدة",
+  "en": "Evidence for the principle"
+ },
+ {
+  "level": 3,
+  "page": 593,
+  "ar": "ضوابط إعمال قاعدة سد الذرائع",
+  "en": "Controls for applying the principle of closing the means"
+ },
+ {
+  "level": 3,
+  "page": 601,
+  "ar": "قاعدة رفع الضرر",
+  "en": "The principle of removing harm"
+ },
+ {
+  "level": 3,
+  "page": 606,
+  "ar": "مسائل أو تفريعات قاعدة رفع الضرر",
+  "en": "Issues or branches of the principle of removing harm"
+ },
+ {
+  "level": 1,
+  "page": 606,
+  "ar": "الفصل العاشر: فكرة المقاصد عند الشاطبي: عرض ومناقشة",
+  "en": "Chapter Ten: The Concept of Maqasid (objectives of the Sharia) according to al-Shatibi: Presentation and Discussion"
+ },
+ {
+  "level": 2,
+  "page": 606,
+  "ar": "موضوع هذا الفصل",
+  "en": "The subject of this chapter"
+ },
+ {
+  "level": 2,
+  "page": 610,
+  "ar": "المبحث الأول: عرض موجز لفكرة المقاصد عند الشاطبي",
+  "en": "Section One: A Brief Presentation of the Concept of Maqasid according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 610,
+  "ar": "معنى الموافقات",
+  "en": "The meaning of al-Muwafaqat (the agreements)"
+ },
+ {
+  "level": 3,
+  "page": 612,
+  "ar": "القطع بالأصول عند الشاطبي",
+  "en": "Certainty in the principles according to al-Shatibi"
+ },
+ {
+  "level": 3,
+  "page": 615,
+  "ar": "خصائص الأصول",
+  "en": "Characteristics of the principles"
+ },
+ {
+  "level": 3,
+  "page": 618,
+  "ar": "الكليات لا تنخرم بمعارضة الجزئيات",
+  "en": "The universals are not invalidated by the opposition of particulars"
+ },
+ {
+  "level": 3,
+  "page": 619,
+  "ar": "الاستقراء هو السبيل الوحيد للقطع",
+  "en": "Induction is the only way to certainty"
+ },
+ {
+  "level": 3,
+  "page": 620,
+  "ar": "دلالات النصوص الشرعية",
+  "en": "The implications of the legal texts"
+ },
+ {
+  "level": 3,
+  "page": 623,
+  "ar": "دلالات الأحكام",
+  "en": "The implications of the rulings"
+ },
+ {
+  "level": 3,
+  "page": 625,
+  "ar": "تعليل الشريعة بمقاصدها",
+  "en": "The justification of the Sharia by its objectives"
+ },
+ {
+  "level": 3,
+  "page": 627,
+  "ar": "المقاصد",
+  "en": "The objectives"
+ },
+ {
+  "level": 3,
+  "page": 627,
+  "ar": "مفهوم الشاطبي للمصلحة والمفسدة",
+  "en": "Al-Shatibi's concept of benefit (maslaha) and harm (mafsada)"
+ },
+ {
+  "level": 3,
+  "page": 629,
+  "ar": "معنى تعليل الشريعة بالمصالح",
+  "en": "The meaning of justifying the Sharia by benefits"
+ },
+ {
+  "level": 3,
+  "page": 631,
+  "ar": "الاجتهاد والتقليد",
+  "en": "Ijtihad (independent reasoning) and Taqlid (following)"
+ },
+ {
+  "level": 2,
+  "page": 632,
+  "ar": "المبحث الثاني: مناقشة فكرة الشاطبي: الكليات والاستقراء",
+  "en": "Section Two: Discussion of al-Shatibi's Idea: Universals and Induction"
+ },
+ {
+  "level": 3,
+  "page": 632,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this topic"
+ },
+ {
+  "level": 3,
+  "page": 633,
+  "ar": "اشتراط القطع بأصول الفقه",
+  "en": "The condition of certainty in the principles of jurisprudence"
+ },
+ {
+  "level": 3,
+  "page": 639,
+  "ar": "وجوب العمل بالظني",
+  "en": "The obligation to act on the speculative"
+ },
+ {
+  "level": 3,
+  "page": 641,
+  "ar": "استقلال السنة بالتشريع",
+  "en": "The independence of the Sunnah in legislation"
+ },
+ {
+  "level": 3,
+  "page": 647,
+  "ar": "الاستقراء",
+  "en": "Induction"
+ },
+ {
+  "level": 3,
+  "page": 655,
+  "ar": "معارضة الجزئي للكلي",
+  "en": "The opposition of the particular to the universal"
+ },
+ {
+  "level": 3,
+  "page": 658,
+  "ar": "التواتر المعنوي",
+  "en": "The moral transmission"
+ },
+ {
+  "level": 2,
+  "page": 663,
+  "ar": "المبحث الثالث: مناقشة فكرة الشاطبي: المقاصد والعلل",
+  "en": "Section Three: Discussion of al-Shatibi's Idea: Objectives and Causes"
+ },
+ {
+  "level": 3,
+  "page": 664,
+  "ar": "موضوع هذا المبحث",
+  "en": "The subject of this topic"
+ },
+ {
+  "level": 3,
+  "page": 664,
+  "ar": "أصل التعليل",
+  "en": "The origin of justification"
+ },
+ {
+  "level": 3,
+  "page": 665,
+  "ar": "رد تعليل أفعال الله تعالى",
+  "en": "Refuting the justification of the actions of Allah, Exalted is He"
+ },
+ {
+  "level": 3,
+  "page": 671,
+  "ar": "المقاصد والعلل",
+  "en": "Objectives and causes"
+ },
+ {
+  "level": 3,
+  "page": 676,
+  "ar": "الاستغناء بالكليات عن الجزئيات",
+  "en": "Sufficiency of the universals over the particulars"
+ },
+ {
+  "level": 3,
+  "page": 684,
+  "ar": "ملاحظات أخرى",
+  "en": "Other observations"
+ },
+ {
+  "level": 1,
+  "page": 685,
+  "ar": "الخاتمة",
+  "en": "Conclusion"
+ },
+ {
+  "level": 1,
+  "page": 694,
+  "ar": "فهرس المصادر والمراجع",
+  "en": "Index of Sources and References"
+ },
+ {
+  "level": 1,
+  "page": 700,
+  "ar": "فهرس الآيات",
+  "en": "Index of Verses"
+ },
+ {
+  "level": 1,
+  "page": 707,
+  "ar": "فهرس الأحاديث",
+  "en": "Index of Hadith"
+ },
+ {
+  "level": 1,
+  "page": 709,
+  "ar": "فهرس المحتويات",
+  "en": "Index of Contents"
+ }
+]

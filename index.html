@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=13">
+<link rel="stylesheet" href="assets/style.css?v=322d21e8fd">
 </head>
 <body>
 <div class="home">
@@ -67,11 +67,12 @@
   </aside>
 </div>
 
-<script src="assets/common.js?v=6"></script>
+<script src="assets/book.js?v=322d21e8fd"></script>
+<script src="assets/common.js?v=322d21e8fd"></script>
 <script>
-  Maqasid.bindThemeToggle(document.getElementById('theme-toggle'));
+  Site.bindThemeToggle(document.getElementById('theme-toggle'));
 
-  const saved = Maqasid.load();
+  const saved = Site.load();
   if (saved.page && saved.lang) {
     const link = document.getElementById('continue-link');
     const isAr = saved.lang === 'ar';

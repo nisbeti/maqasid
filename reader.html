@@ -20,14 +20,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=13">
+<link rel="stylesheet" href="assets/style.css?v=322d21e8fd">
 </head>
 <body class="reader-page">
 <header class="topbar">
   <a id="home" class="btn icon-btn" href="./">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
   </a>
-  <select id="page-select" class="page-select"></select>
+  <button id="contents-btn" class="btn contents-btn" type="button" aria-haspopup="dialog" aria-controls="contents">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+    <span class="contents-label"></span>
+  </button>
   <span class="spacer"></span>
   <button id="lang-toggle" class="btn" type="button"></button>
   <button id="theme-toggle" class="btn icon-btn" type="button">
@@ -37,6 +40,22 @@
 </header>
 
 <main id="reader" class="reader"></main>
+
+<dialog id="contents" class="contents-panel" aria-labelledby="contents-title">
+  <div class="contents-head">
+    <h2 id="contents-title" class="contents-title"></h2>
+    <button id="contents-close" class="btn icon-btn" type="button">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <form id="page-jump" class="page-jump">
+    <label for="page-input" class="page-jump-label"></label>
+    <input id="page-input" class="page-input" type="number" inputmode="numeric" min="1" required>
+    <span class="page-total"></span>
+    <button type="submit" class="btn btn-primary page-go"></button>
+  </form>
+  <ol id="contents-list" class="contents-list"></ol>
+</dialog>
 
 <template id="en-note-template">
   <p class="en-note" lang="en" dir="ltr">
@@ -62,8 +81,9 @@
   </button>
 </nav>
 
-<script src="assets/common.js?v=6"></script>
-<script src="assets/reader.js?v=18"></script>
-<script src="assets/size-tip.js?v=2"></script>
+<script src="assets/book.js?v=322d21e8fd"></script>
+<script src="assets/common.js?v=322d21e8fd"></script>
+<script src="assets/reader.js?v=322d21e8fd"></script>
+<script src="assets/size-tip.js?v=322d21e8fd"></script>
 </body>
 </html>

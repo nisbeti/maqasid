@@ -1,0 +1,47 @@
+{
+  "slug": "maqasid",
+  "storage_key": "maqasid",
+  "domain": "maqasid.info",
+  "dev_port": 8766,
+  "source": "المقاصد عند الإمام الشاطبي.txt",
+  "metadata": {},
+  "title": {
+    "ar": "المقاصد عند الإمام الشاطبي",
+    "en": "Al-Maqasid according to Imam al-Shatibi"
+  },
+  "subtitle": {
+    "ar": "دراسة أصولية فقهية",
+    "en": "A Study in Usul and Fiqh"
+  },
+  "description": "Al-Maqasid according to Imam al-Shatibi — read the book in Arabic or English.",
+  "about_book": {
+    "ar": [
+      "يتناول هذا الكتاب نظرية مقاصد الشريعة عند الإمام أبي إسحاق الشاطبي (ت 790هـ)، الفقيه الأندلسي الغرناطي صاحب كتاب «الموافقات»، الذي أرسى المقاصد علماً قائماً بذاته.",
+      "ويدرس المؤلف كيف تقوم أحكام الشريعة على رعاية مصالح العباد في العاجل والآجل، ومكانة المقاصد في أصول الفقه، وأثرها في الاجتهاد والفقه التطبيقي."
+    ],
+    "en": [
+      "This book examines the theory of the higher objectives of Islamic law (<em>maqasid al-shari‘a</em>) as set out by Imam Abu Ishaq al-Shatibi (d. 790 AH / 1388 CE), the Andalusian jurist of Granada whose <em>al-Muwafaqat</em> established the maqasid as a discipline in its own right.",
+      "The author studies how the rulings of the Shari‘a are grounded in securing human welfare in this life and the next, the place of the maqasid within the principles of jurisprudence (<em>usul al-fiqh</em>), and their bearing on legal reasoning and applied law."
+    ]
+  },
+  "about_author": {
+    "ar": [
+      "محمود عبد الهادي فاعور. صدرت الطبعة الأولى سنة 1427هـ - 2006م عن بسيوني للطباعة في صيدا، لبنان."
+    ],
+    "en": [
+      "Mahmoud Abdul Hadi Faour. First edition published in 1427 AH / 2006 CE by Basyouni Printing, Sidon, Lebanon."
+    ]
+  },
+  "index": {
+    "first_page": 700,
+    "sections": {
+      "فهرس الآيات": "verse",
+      "فهرس الأحاديث": "hadith",
+      "المحتويات": "toc"
+    },
+    "toc_overrides": {
+      "الشاطبي وعصره": 8
+    },
+    "refs_fixed": true
+  }
+}
