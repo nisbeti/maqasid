@@ -1,19 +1,18 @@
-{ They are but names you have named, you and your forefathers. Allah has not sent down any authority for them. They follow not except assumption and what their souls desire. And there has certainly come to them from their Lord guidance. } ... 23 ... al-Najm ... 634
-{ They follow nothing but conjecture and what their souls desire } ... 23 ... al-Najm ... 293
-{ Or you have touched women } ... 43 ... Women ... 469
-{
-{ Or He may seize them with a gradual fear } ... 47 ... An-Nahl ... 275
-{ You desire the pleasures of this world, while Allah desires the Hereafter. } ... 67 ... Al-Anfal ... 361
-{ A reward for what they used to do } ... 17 ... Al-Sajda ... 71
-14 ... Al-Ahqaf
-24 ... the Event.
-{ Until the white thread of dawn becomes distinct to you from the black thread (of night) } ... 187 ... Al-Baqarah ... 279
-{ Prohibited to you are dead animals, blood, and the flesh of swine } ... 3 ... Al-Ma'idah ... 281, 648
-{ Your mothers are forbidden to you } ... 23 ... An-Nisa ... 599
-{ The Creator of all things } ... 62 ... Az-Zumar ... 440
-{ Taste! Indeed, you are the Mighty, the Honorable. } ... 49 ... Al-Dukhan ... 418
-{ My Lord, show me how You give life to the dead } ... 260 ... Al-Baqarah ... 467
-{ Our Lord, and lay not upon us a burden like that which You laid upon those before us } ... 286 ... Al-Baqarah ... 289, 295
-{ Stoning in the unseen } ... 22 ... Al-Kahf ... 466
-{ Messengers bringing good tidings and warning } ... 165 ... An-Nisa ... 544
-{ Messengers bringing good tidings and warning, so that people will have no argument against Allah after the messengers } ... 165 ... An-Nisa ... 217
+{ Indeed, they are nothing but names you have named them, you and your forefathers. Allah has not sent down any authority for them. They follow nothing but conjecture and what the souls desire. And there has certainly come to them from their Lord the guidance. } ... 23 ... al-Najm ... 634
+{ They follow nothing but conjecture and what the souls desire. } ... 23 ... al-Najm ... 293
+{ Or you have touched women. } ... 43 ... al-Nisa ... 469
+{ Or He takes them in fear. } ... 47 ... al-Nahl ... 275
+{ You desire the pleasures of this world, but Allah desires the Hereafter. } ... 67 ... al-Anfal ... 361
+{ A reward for what they used to do. } ... 17 ... al-Sajda ... 71
+14 ... al-Ahqaf
+24 ... al-Waqi'a
+{ Until the white thread of dawn becomes distinct to you from the black thread of night. } ... 187 ... al-Baqarah ... 279
+{ Prohibited to you are dead animals, blood, and the flesh of swine. } ... 3 ... al-Ma'idah ... 281, 648
+{ Prohibited to you are your mothers. } ... 23 ... al-Nisa ... 599
+{ Creator of all things. } ... 62 ... al-Zumar ... 440
+{ Taste! Indeed, you are the Exalted in Might, the Honorable. } ... 49 ... al-Dukhan ... 418
+{ My Lord, show me how You give life to the dead. } ... 260 ... al-Baqarah ... 467
+{ Our Lord, and lay not upon us a burden like that which You laid upon those before us. } ... 286 ... al-Baqarah ... 289, 295
+{ A conjecture by the unseen. } ... 22 ... al-Kahf ... 466
+{ Messengers as bringers of good tidings and warners. } ... 165 ... al-Nisa ... 544
+{ Messengers as bringers of good tidings and warners, so that there will be for the people no argument against Allah after the messengers. } ... 165 ... al-Nisa ... 217
