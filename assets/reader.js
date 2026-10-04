@@ -329,6 +329,13 @@
   // waiting for the finger to lift left that swipe nowhere to go. Rebuilding
   // keeps the same page under the finger, so it cannot be seen.
   function settle() {
+    if (performance.now() - lastUserScroll > USER_SCROLL_MS) {
+      // Nobody swiped: the track moved because its width changed (a pane or
+      // window opening, a phone turning) while the page was being drawn. That
+      // is not a page turn - put the current page back.
+      alignCurrent();
+      return;
+    }
     const track = el.reader.getBoundingClientRect();
     const gap = (slide) => Math.abs(slide.el.getBoundingClientRect().left - track.left);
     const nearest = [...slides.values()].reduce((best, slide) => (gap(slide) < gap(best) ? slide : best));
@@ -341,6 +348,30 @@
       state = { ...state, page: nearest.page };
       render();
     }
+  }
+
+  /*
+    A page is only ever adopted because the reader moved the track. When the
+    reader has no width yet as the track is built (the tab or pane is still
+    opening), putting the current page in view lands short, and settle() saw a
+    neighbour at rest and adopted it - and again from there, so the reader
+    drifted back a page or several by itself (45 -> 44, 20 -> 19 -> 15). So
+    settle() only turns the page within a while of a touch, wheel, press or
+    page turn; and when the track changes width, the current page is lined up
+    again.
+  */
+  const USER_SCROLL_MS = 4000;
+  let lastUserScroll = -Infinity;
+  const markUserScroll = () => { lastUserScroll = performance.now(); };
+
+  function alignCurrent() {
+    const slide = currentSlide();
+    if (!slide) return;
+    el.reader.style.scrollSnapType = 'none';
+    slide.el.scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
+    const snapBack = () => { el.reader.style.scrollSnapType = ''; };
+    requestAnimationFrame(snapBack);
+    setTimeout(snapBack);
   }
 
   function scheduleSettle() {
@@ -383,6 +414,7 @@
     page = clampPage(page);
     if (page === state.page) return;
     const neighbour = slides.get(slideKey(state.lang, page));
+    markUserScroll();
     if (neighbour && Math.abs(page - state.page) === 1) {
       // The next page is already beside this one: slide to it. (Further pages
       // in the track jump instead, rather than gliding past the ones between.)
@@ -550,6 +582,15 @@
 
   // Swiping is the track scrolling. Wait for the scrolling to stop before
   // deciding where it came to rest.
+  for (const type of ['touchstart', 'touchmove', 'wheel', 'pointerdown']) {
+    el.reader.addEventListener(type, markUserScroll, { passive: true });
+  }
+  let trackWidth = el.reader.clientWidth;
+  new ResizeObserver(() => {
+    if (el.reader.clientWidth === trackWidth) return;
+    trackWidth = el.reader.clientWidth;
+    alignCurrent();
+  }).observe(el.reader);
   el.reader.addEventListener('touchend', settleSoon, { passive: true });
   el.reader.addEventListener('touchcancel', settleSoon, { passive: true });
   el.reader.addEventListener('scroll', settleSoon, { passive: true });

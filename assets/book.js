@@ -20,67 +20,67 @@ window.BOOK = {
       "Al-Shatibi and His Era"
     ],
     [
-      1,
+      2,
       8,
       "تعريف بالشاطبي وعصره",
       "Introduction to Al-Shatibi and His Era"
     ],
     [
-      1,
+      2,
       8,
       "التعريف بالشاطبي",
       "Introduction to Al-Shatibi"
     ],
     [
-      1,
+      2,
       10,
       "عصره",
       "His Era"
     ],
     [
-      1,
+      2,
       15,
       "الحالة السياسية",
       "The Political Situation"
     ],
     [
-      1,
+      2,
       18,
       "الحالة الاقتصادية",
       "The Economic Situation"
     ],
     [
-      1,
+      2,
       20,
       "الحالة العلمية",
       "The Scientific Situation"
     ],
     [
-      1,
+      2,
       23,
       "مناخ المجتمع الثقافي",
       "The Cultural Climate of Society"
     ],
     [
-      1,
+      2,
       30,
       "شيوخ الشاطبي",
       "Al-Shatibi's Teachers"
     ],
     [
-      1,
+      2,
       32,
       "تلاميذه",
       "His Students"
     ],
     [
-      1,
+      2,
       33,
       "مكانته العلمية",
       "His Scholarly Standing"
     ],
     [
-      1,
+      2,
       35,
       "مؤلفاته",
       "His Works"
