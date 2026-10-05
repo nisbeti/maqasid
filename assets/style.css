@@ -102,6 +102,15 @@ button, select {
   justify-content: flex-end;
 }
 
+/* Link back to the page listing all the sites, opposite the theme toggle */
+.all-sites { margin-inline-end: auto; }
+.all-sites-en {
+  padding-inline-start: 0.5em;
+  border-inline-start: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
 .hero {
   text-align: center;
   margin: 8px 0 32px;
