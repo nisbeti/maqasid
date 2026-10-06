@@ -218,12 +218,31 @@
   const slideKey = (lang, page) => `${lang}/${page}`;
   const currentSlide = () => slides.get(slideKey(state.lang, state.page));
 
+  // The note under each English page, with a link to the book's corrections
+  // form (book.json "feedback") pre-filled with this page's address.
+  function makeNote(page) {
+    const note = el.noteTemplate.content.cloneNode(true);
+    const feedback = window.BOOK.feedback;
+    if (feedback) {
+      const form = new URL(feedback.form);
+      form.searchParams.set('usp', 'pp_url');
+      form.searchParams.set(feedback.urlField, `${location.origin}${location.pathname}#en/${page}`);
+      const link = document.createElement('a');
+      link.href = form.href;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = 'Suggest a correction';
+      note.querySelector('.en-note').append(' ', link, '.');
+    }
+    return note;
+  }
+
   function makeSlide(lang, page) {
     const node = document.createElement('div');
     node.className = 'slide loading'; // until fillSlide has put its page in
     const article = document.createElement('article');
     node.append(article);
-    if (lang === 'en') node.append(el.noteTemplate.content.cloneNode(true));
+    if (lang === 'en') node.append(makeNote(page));
     return { key: slideKey(lang, page), lang, page, el: node, article, loaded: false, loading: null };
   }
 

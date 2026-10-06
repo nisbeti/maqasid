@@ -489,6 +489,7 @@ body.reader-page .bottombar {
   line-height: 1.5;
   color: var(--muted);
 }
+.en-note a { color: var(--accent); }
 
 .bottombar {
   position: fixed;
