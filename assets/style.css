@@ -1,0 +1,627 @@
+:root {
+  --font-scale: 1;
+  --bg: #f6f0e2;
+  --surface: #fffaf0;
+  --text: #2a2017;
+  --muted: #76664f;
+  --accent: #8a5a2b;
+  --accent-text: #fffaf0;
+  --border: #e2d4b8;
+  --shadow: 0 1px 3px rgba(60, 40, 10, 0.12);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #15120e;
+  --surface: #1e1914;
+  --text: #ece2cf;
+  --muted: #a8977e;
+  --accent: #d9a766;
+  --accent-text: #1a140d;
+  --border: #3a3127;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Amiri", "Times New Roman", serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+a { color: var(--accent); }
+
+button, select {
+  font: inherit;
+  color: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 44px;
+  padding: 0.3em 1em;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.icon-btn {
+  width: 44px;
+  padding: 0;
+}
+
+.icon { width: 20px; height: 20px; flex: none; }
+
+/* Theme toggle shows the icon for the mode you'll switch to */
+.icon-sun { display: none; }
+:root[data-theme="dark"] .icon-sun { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+/* Mirror directional arrows in RTL */
+[dir="rtl"] .icon-dir { transform: scaleX(-1); }
+
+/* ---------- Index ---------- */
+
+.home {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+.home-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Link back to the page listing all the sites, opposite the theme toggle */
+.all-sites { margin-inline-end: auto; }
+.all-sites-en {
+  padding-inline-start: 0.5em;
+  border-inline-start: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.hero {
+  text-align: center;
+  margin: 8px 0 32px;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 6vw, 2.8rem);
+  line-height: 1.4;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.hero .subtitle {
+  color: var(--muted);
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.hero .en-title {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.ornament {
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin: 16px 0;
+  letter-spacing: 0.5em;
+}
+
+.summaries {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  color: var(--accent);
+}
+
+.card h3 {
+  margin: 16px 0 4px;
+  font-size: 1.1rem;
+}
+
+.card p { margin: 0 0 8px; }
+
+.card[lang="ar"] { font-size: 1.25rem; line-height: 2; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 32px 0 12px;
+}
+
+.actions .btn { min-width: 220px; font-size: 1.1rem; }
+
+.continue {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.disclaimer {
+  max-width: 640px;
+  margin: 24px auto 0;
+  padding: 12px 16px;
+  border-inline-start: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.disclaimer p { margin: 0; }
+.disclaimer p + p { margin-top: 6px; }
+
+/* Small links to the whole book as one text file per language */
+.downloads {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.downloads a { color: var(--muted); }
+.downloads a:hover { color: var(--accent); }
+
+@media (max-width: 700px) {
+  .summaries { grid-template-columns: 1fr; }
+  .actions .btn { width: 100%; }
+}
+
+/* ---------- Reader ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar .spacer { flex: 1; }
+
+/*
+  Contents: the top bar's button says which section you're in and opens a
+  panel of chapters (each folding its sections away) and a page-number box.
+*/
+.contents-btn {
+  min-width: 0;
+  max-width: min(22em, 50vw);
+  padding-inline: 0.8em 1em;
+}
+.contents-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.contents-panel {
+  width: min(34rem, calc(100vw - 32px));
+  max-height: min(85vh, 52rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 16px 48px rgba(30, 20, 5, 0.35);
+}
+.contents-panel[open] { display: flex; flex-direction: column; }
+.contents-panel::backdrop { background: rgba(20, 14, 6, 0.45); }
+
+.contents-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px 8px 20px;
+}
+[dir="rtl"] .contents-head { padding: 12px 20px 8px 12px; }
+.contents-title { flex: 1; margin: 0; font-size: 1.25rem; }
+
+.page-jump {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.page-jump-label { color: var(--muted); }
+.page-input {
+  width: 5.5em;
+  min-height: 44px;
+  padding: 0 0.6em;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+}
+.page-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.page-total { color: var(--muted); }
+.page-go { margin-inline-start: auto; }
+
+.contents-list,
+.contents-sections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.contents-list {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 8px 12px;
+}
+.contents-row { display: flex; align-items: center; }
+.contents-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.contents-toggle .icon { transition: transform 0.15s ease; }
+[dir="rtl"] .contents-toggle .icon { transform: scaleX(-1); }
+.contents-toggle[aria-expanded="true"] .icon { transform: rotate(90deg); }
+.contents-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.contents-link {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 40px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.45;
+}
+.contents-link:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.contents-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.contents-link > span:first-child { flex: 1; }
+.contents-page { color: var(--muted); font-size: 0.85em; font-variant-numeric: tabular-nums; }
+.contents-link[aria-current] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  font-weight: 700;
+}
+.contents-entry.level-1 > .contents-row .contents-link { font-weight: 700; }
+.contents-entry.level-1 > .contents-row:not(:has(.contents-toggle)) { padding-inline-start: 36px; }
+.contents-entry.level-2 { padding-inline-start: 36px; }
+.contents-entry.level-3 { padding-inline-start: 60px; font-size: 0.94em; }
+
+@media (max-width: 600px) {
+  .contents-panel {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .contents-btn { max-width: 46vw; }
+  .contents-entry.level-2 { padding-inline-start: 28px; }
+  .contents-entry.level-3 { padding-inline-start: 44px; }
+}
+
+/*
+  The reader is a screen of its own: the bars above and below, and between them
+  a track of pages that the browser scrolls and snaps sideways, each page
+  scrolling up and down by itself.
+*/
+body.reader-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+body.reader-page .topbar,
+body.reader-page .bottombar {
+  position: relative;
+  flex: none;
+}
+
+.reader {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.reader::-webkit-scrollbar { display: none; }
+
+.reader .slide {
+  flex: 0 0 100%;
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: 24px 16px 48px;
+}
+
+.reader .slide > * {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.reader .slide article {
+  transition: opacity 0.18s ease;
+}
+
+.reader .slide.loading article { opacity: 0.25; }
+
+/*
+  A fast swipe can reach a page that is still on its way. Show a spinner in
+  the middle of it rather than a blank page; it fades in after a moment, so a
+  page that arrives quickly never flashes one.
+*/
+.reader .slide.loading { position: relative; }
+
+.reader .slide.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: slide-spinner-in 0.2s ease-out 0.15s both, slide-spin 0.8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes slide-spinner-in { from { opacity: 0; } }
+@keyframes slide-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .reader .slide.loading::before { animation: slide-spinner-in 0.2s ease-out 0.15s both, slide-spin 2.4s linear infinite; }
+}
+
+.reader p {
+  margin: 0 0 0.9em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+:root[lang="ar"] .reader {
+  font-size: calc(1.4rem * var(--font-scale));
+  line-height: 2.15;
+}
+
+:root[lang="en"] .reader {
+  font-size: calc(1.2rem * var(--font-scale));
+  line-height: 1.8;
+}
+
+.reader hr.fn-sep {
+  width: 30%;
+  margin: 1.5em 0 0.8em;
+  margin-inline-end: auto;
+  border: 0;
+  border-top: 1px solid var(--muted);
+}
+
+.reader p.footnote {
+  font-size: 0.8em;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 0.3em;
+  text-align: start;
+}
+
+/* Page references in the indexes at the back of the book */
+.reader a.ref {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  padding: 0.15em 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.reader .error {
+  text-align: center;
+  color: var(--muted);
+}
+
+.en-note {
+  margin-top: 2em;
+  padding-top: 0.8em;
+  border-top: 1px dashed var(--border);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.en-note a { color: var(--accent); }
+
+.bottombar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid var(--border);
+}
+
+.bottombar .counter {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.font-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* − and + joined into one pill */
+.font-size {
+  display: inline-flex;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.font-size .btn {
+  width: 44px;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.font-size .btn:first-child {
+  border-radius: 999px 0 0 999px;
+  border-right-width: 0;
+}
+
+.font-size .btn:last-child {
+  border-radius: 0 999px 999px 0;
+}
+
+.font-size .btn + .btn {
+  border-left-color: var(--border);
+}
+
+@media (max-width: 480px) {
+  .topbar { padding: 8px 12px; gap: 6px; }
+  .bottombar { padding-inline: 12px; }
+  .bottombar #prev, .bottombar #next { width: 44px; padding: 0; }
+  .bottombar .label { display: none; }
+  .bottombar .counter { font-size: 0.85rem; }
+}
+
+/* First-visit tip that points at the text size buttons. */
+#size-tip {
+  position: fixed;
+  z-index: 30;
+  /*
+    It is a tip, not something to get past. It lies over the page, so taking
+    presses would swallow a swipe that began on it, and a tap meant for the
+    text. Only its own button answers.
+  */
+  pointer-events: none;
+  width: min(16rem, calc(100vw - 2rem));
+  padding: 0.8rem 0.95rem 0.75rem;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 12px 32px rgba(40, 20, 0, 0.28);
+  font-size: 1rem;
+  line-height: 1.5;
+  animation: size-tip-in 0.25s ease-out;
+}
+#size-tip[hidden] { display: none; }
+#size-tip::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: var(--arrow-x, 50%);
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  border-radius: 0 0 2px 0;
+}
+#size-tip p { margin: 0 0 0.6rem; }
+#size-tip .size-tip-actions { display: flex; justify-content: flex-end; }
+#size-tip .size-tip-close {
+  pointer-events: auto;
+  background: var(--accent-text);
+  color: var(--accent);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.font-size.tip-target { animation: size-tip-pulse 1.6s ease-out infinite; }
+@keyframes size-tip-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes size-tip-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  100% { box-shadow: 0 0 0 10px transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #size-tip, .font-size.tip-target { animation: none; }
+}
